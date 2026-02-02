@@ -60,7 +60,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DSGN-01**: Mevcut Moka Dijital logosu kullanılır
 - [ ] **DSGN-02**: Logo uyumlu renk paleti ve tipografi oluşturulur
-- [ ] **DSGN-03']: Tüm sayfalarda tutarlı görsel tasarım dili uygulanır
+- [ ] **DSGN-03**: Tüm sayfalarda tutarlı görsel tasarım dili uygulanır
 
 ## v2 Requirements
 
@@ -106,9 +106,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| HOME-01 | Phase 1 | Pending |
-| HOME-02 | Phase 1 | Pending |
-| HOME-03 | Phase 1 | Pending |
+| HOME-01 | Phase 2 | Pending |
+| HOME-02 | Phase 2 | Pending |
+| HOME-03 | Phase 2 | Pending |
 | SERV-01 | Phase 2 | Pending |
 | SERV-02 | Phase 2 | Pending |
 | SERV-03 | Phase 2 | Pending |
@@ -119,30 +119,38 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |
-| FORM-01 | Phase 3 | Pending |
-| FORM-02 | Phase 3 | Pending |
-| FORM-03 | Phase 3 | Pending |
-| FORM-04 | Phase 3 | Pending |
-| FORM-05 | Phase 3 | Pending |
-| DEMO-01 | Phase 6 | Pending |
-| DEMO-02 | Phase 6 | Pending |
-| DEMO-03 | Phase 6 | Pending |
-| TECH-01 | Phase 5 | Pending |
-| TECH-02 | Phase 1 | Pending |
-| TECH-03 | Phase 5 | Pending |
-| TECH-04 | Phase 4 | Pending |
-| TECH-05 | Phase 4 | Pending |
 | NAV-01 | Phase 2 | Pending |
 | NAV-02 | Phase 2 | Pending |
 | DSGN-01 | Phase 2 | Pending |
 | DSGN-02 | Phase 2 | Pending |
 | DSGN-03 | Phase 2 | Pending |
+| FORM-01 | Phase 3 | Pending |
+| FORM-02 | Phase 3 | Pending |
+| FORM-03 | Phase 3 | Pending |
+| FORM-04 | Phase 3 | Pending |
+| FORM-05 | Phase 3 | Pending |
+| TECH-02 | Phase 1 | Pending |
+| TECH-04 | Phase 4 | Pending |
+| TECH-05 | Phase 4 | Pending |
+| TECH-03 | Phase 4 | Pending |
+| TECH-01 | Phase 5 | Pending |
+| DEMO-01 | Phase 6 | Pending |
+| DEMO-02 | Phase 6 | Pending |
+| DEMO-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 31 total
 - Mapped to phases: 31
 - Unmapped: 0 ✓
 
+**Phase Distribution:**
+- Phase 1 (Proje Kurulumu): 1 requirement (TECH-02)
+- Phase 2 (Sayfa Yapısı & İçerik): 17 requirements (HOME-01/02/03, SERV-01/02/03/04/05/06, CONT-01/02/03/04, NAV-01/02, DSGN-01/02/03)
+- Phase 3 (Form Entegrasyonu): 5 requirements (FORM-01/02/03/04/05)
+- Phase 4 (SEO & Performans): 3 requirements (TECH-03/04/05)
+- Phase 5 (Test & Deploy): 1 requirement (TECH-01)
+- Phase 6 (PMK Demo): 3 requirements (DEMO-01/02/03)
+
 ---
 *Requirements defined: 2026-02-02*
-*Last updated: 2026-02-02 after initial definition*
+*Last updated: 2026-02-02 after roadmap creation*
