@@ -57,56 +57,52 @@ export default function GoogleIsletmePage() {
 
   return (
     <ServicePageLayout
-        title="Google İşletme Optimizasyonu"
-        description="İşletmenizin Google İşletme Profili'ni optimize ederek yerel aramalarda öne çıkarın"
-        icon={<MapPin className="w-10 h-10" />}
-      >
-        {/* Description Section */}
-        <section className="mb-20">
+      title="Google İşletme Optimizasyonu"
+      description="İşletmenizin Google İşletme Profili'ni optimize ederek yerel aramalarda öne çıkarın"
+      icon={<MapPin className="w-10 h-10" />}
+    >
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Google İşletme ile Yerel Pazarda Öne Çıkın</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              Google İşletme Profili, işletmenizin Google Arama ve Haritalar'da görünür olmasını sağlayan ücretsiz bir araçtır.
+              Moka Dijital olarak, işletmenizin yerel aramalarda üst sıralarda yer alması için profesyonel optimizasyon hizmetleri sunuyoruz.
+            </p>
+            <p>
+              Güncel istatistiklere göre, %81'i müşteri yorumlarını okumadan alışveriş kararını alıyor.
+              Optimize edilmiş bir Google İşletme Profili ile işletmeniz güvenilirliğini artırırken,
+              potansiyel müşterilerin sizi bulmasını kolaylaştırıyoruz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ServiceBenefits benefits={benefits} />
+
+      <ServiceProcess steps={steps} />
+
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Google İşletme ile Yerel Pazarda Öne Çıkın</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                Google İşletme Profili, işletmenizin Google Arama ve Haritalar'da görünür olmasını sağlayan ücretsiz bir araçtır.
-                Moka Dijital olarak, işletmenizin yerel aramalarda üst sıralarda yer alması için profesyonel optimizasyon hizmetleri sunuyoruz.
-              </p>
-              <p>
-                Güncel istatistiklere göre, %81'i müşteri yorumlarını okumadan alışveriş kararını alıyor.
-                Optimize edilmiş bir Google İşletme Profili ile işletmeniz güvenilirliğini artırırken,
-                potansiyel müşterilerin sizi bulmasını kolaylaştırıyoruz.
-              </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Başlamak İçin Doğru Zaman</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              İşletmenizi yerel aramalarda birincil sıraya taşıyacak profesyonel hizmetlerden faydalanın.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="px-8">
+                Hemen Başlayın
+              </Button>
+              <Button size="lg" variant="outline" className="px-8">
+                Ücretsiz Danışmanlık
+              </Button>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Form yakında eklenecek
+            </p>
           </div>
-        </section>
-
-        {/* Benefits Section */}
-        <ServiceBenefits benefits={benefits} />
-
-        {/* Process Section */}
-        <ServiceProcess steps={steps} />
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Başlamak İçin Doğru Zaman</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                İşletmenizi yerel aramalarda birincil sıraya taşıyacak profesyonel hizmetlerden faydalanın.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8">
-                  Hemen Başlayın
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  Ücretsiz Danışmanlık
-                </Button>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Form yakında eklenecek
-              </p>
-            </div>
-          </div>
-        </section>
-      </ServicePageLayout>
-    </>
+        </div>
+      </section>
+    </ServicePageLayout>
+  )
 }

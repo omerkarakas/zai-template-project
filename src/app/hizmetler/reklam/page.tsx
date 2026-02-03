@@ -12,7 +12,7 @@ export default function ReklamPage() {
     },
     {
       title: "Bütçe optimizasyonu ve maliyet kontrolü",
-      description: "Akıllik teklif stratejileri ve bütçe yönetimi ile en düşük maliyetle en fazla dönüşümü elde edin."
+      description: "Akıllık teklif stratejileri ve bütçe yönetimi ile en düşük maliyetle en fazla dönüşümü elde edin."
     },
     {
       title: "A/B testleri ile performans artışı",
@@ -62,56 +62,52 @@ export default function ReklamPage() {
 
   return (
     <ServicePageLayout
-        title="Dijital Reklam Yönetimi"
-        description="Google Ads, Meta Ads ve LinkedIn reklamları ile hedef kitlenize ulaşın, ROI'nizi artırın"
-        icon={<Megaphone className="w-10 h-10" />}
-      >
-        {/* Description Section */}
-        <section className="mb-20">
+      title="Dijital Reklam Yönetimi"
+      description="Google Ads, Meta Ads ve LinkedIn reklamları ile hedef kitlenize ulaşın, ROI'nizi artırın"
+      icon={<Megaphone className="w-10 h-10" />}
+    >
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Veri Odaklı Reklam Stratejileri</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              Dijital dünyada doğru zamanda, doğru kitleye, doğru mesajla ulaşmak başarının anahtarıdır.
+              Moka Dijital olarak, Google Ads, Meta Ads ve LinkedIn Ads platformlarında profesyonel reklam yönetimi hizmetleri sunuyoruz.
+            </p>
+            <p>
+              Veri odaklı yaklaşımımız ile reklamlarınızın performansını sürekli izler, optimize eder.
+              Hedef kitle analizi, A/B testleri ve bütçe optimizasyonu ile markanızı dijital alanda öne çıkarıyor,
+              ROI'nizi maksimize ediyoruz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ServiceBenefits benefits={benefits} />
+
+      <ServiceProcess steps={steps} />
+
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Veri Odaklı Reklam Stratejileri</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                Dijital dünyada doğru zamanda, doğru kitleye, doğru mesajla ulaşmak başarının anahtarıdır.
-                Moka Dijital olarak, Google Ads, Meta Ads ve LinkedIn Ads platformlarında profesyonel reklam yönetimi hizmetleri sunuyoruz.
-              </p>
-              <p>
-                Veri odaklı yaklaşımımız ile reklamlarınızın performansını sürekli izler, optimize eder.
-                Hedef kitle analizi, A/B testleri ve bütçe optimizasyonu ile markanızı dijital alanda öne çıkarıyor,
-                ROI'nizi maksimize ediyoruz.
-              </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Reklam Danışmanlığı Alın</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Reklam bütçenizden en iyi şekilde yararlanmak için uzman desteği alın.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="px-8">
+                Başlayın
+              </Button>
+              <Button size="lg" variant="outline" className="px-8">
+                Ücretsiz Analiz
+              </Button>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Form yakında eklenecek
+            </p>
           </div>
-        </section>
-
-        {/* Benefits Section */}
-        <ServiceBenefits benefits={benefits} />
-
-        {/* Process Section */}
-        <ServiceProcess steps={steps} />
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Reklam Danışmanlığı Alın</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Reklam bütçenizden en iyi şekilde yararlanmak için uzman desteği alın.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8">
-                  Başlayın
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  Ücretsiz Analiz
-                </Button>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Form yakında eklenecek
-              </p>
-            </div>
-          </div>
-        </section>
-      </ServicePageLayout>
-    </>
+        </div>
+      </section>
+    </ServicePageLayout>
+  )
 }

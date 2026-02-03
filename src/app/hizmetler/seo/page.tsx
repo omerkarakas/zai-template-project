@@ -62,56 +62,52 @@ export default function SeoPage() {
 
   return (
     <ServicePageLayout
-        title="Yerel SEO & Global SEO"
-        description="Hedef kitlenize ulaşın: Yerel işletmeler için yerel SEO, global markalar için uluslararası SEO"
-        icon={<Search className="w-10 h-10" />}
-      >
-        {/* Description Section */}
-        <section className="mb-20">
+      title="Yerel SEO & Global SEO"
+      description="Hedef kitlenize ulaşın: Yerel işletmeler için yerel SEO, global markalar için uluslararası SEO"
+      icon={<Search className="w-10 h-10" />}
+    >
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Güçlü Bir Online Varlık için SEO Stratejisi</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              SEO (Search Engine Optimization), web sitenizin Google ve diğer arama motorlarında daha yüksek sıralarda yer almasını
+              sağlayan dijital pazarlama stratejilerinin tümüdür. Moka Dijital olarak, hem yerel işletmeler için Yerel SEO
+              hem de global markalar için Uluslararası SEO hizmetleri sunuyoruz.
+            </p>
+            <p>
+              Doğru SEO stratejisi ile işletmenizin hedef kitlesine doğrudan ulaşabilir, organik trafiğinizi artırabilir
+              ve satışlarınızı önemli ölçüde artırabilirsiniz. Uzman ekibimiz ile rekabetin önde yer alın.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ServiceBenefits benefits={benefits} />
+
+      <ServiceProcess steps={steps} />
+
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Güçlü Bir Online Varlık için SEO Stratejisi</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                SEO (Search Engine Optimization), web sitenizin Google ve diğer arama motorlarında daha yüksek sıralarda yer almasını
-                sağlayan dijital pazarlama stratejilerinin tümüdür. Moka Dijital olarak, hem yerel işletmeler için Yerel SEO
-                hem de global markalar için Uluslararası SEO hizmetleri sunuyoruz.
-              </p>
-              <p>
-                Doğru SEO stratejisi ile işletmenizin hedef kitlesine doğrudan ulaşabilir, organik trafiğinizi artırabilir
-                ve satışlarınızı önemli ölçüde artırabilirsiniz. Uzman ekibimiz ile rekabetin önde yer alın.
-              </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">SEO Performansınızı Hemen Artırın</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Uzman SEO ekibimiz ile hedef kitlenize ulaşın, organik trafiğinizi katlayın.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="px-8">
+                Ücretsiz SEO Analizi İsteyin
+              </Button>
+              <Button size="lg" variant="outline" className="px-8">
+                SEO Stratejisi Oluşturun
+              </Button>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Form yakında eklenecek
+            </p>
           </div>
-        </section>
-
-        {/* Benefits Section */}
-        <ServiceBenefits benefits={benefits} />
-
-        {/* Process Section */}
-        <ServiceProcess steps={steps} />
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">SEO Performansınızı Hemen Artırın</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Uzman SEO ekibimiz ile hedef kitlenize ulaşın, organik trafiğinizi katlayın.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8">
-                  Ücretsiz SEO Analizi İsteyin
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  SEO Stratejisi Oluşturun
-                </Button>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Form yakında eklenecek
-              </p>
-            </div>
-          </div>
-        </section>
-      </ServicePageLayout>
-    </>
+        </div>
+      </section>
+    </ServicePageLayout>
+  )
 }

@@ -62,56 +62,52 @@ export default function OtomasyonPage() {
 
   return (
     <ServicePageLayout
-        title="İş Akışı ve AI Otomasyonları"
-        description="n8n ile işletmenizin manuel süreçlerini otomatikleştirin, zaman ve maliyet tasarrufu sağlayın"
-        icon={<Bot className="w-10 h-10" />}
-      >
-        {/* Description Section */}
-        <section className="mb-20">
+      title="İş Akışı ve AI Otomasyonları"
+      description="n8n ile işletmenizin manuel süreçlerini otomatikleştirin, zaman ve maliyet tasarrufu sağlayın"
+      icon={<Bot className="w-10 h-10" />}
+    >
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">İşletmenizi Geleceğe Taşıyın</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              Manuel süreçler, işletmenizin büyümesini yavaşlatan en büyük engellerden biridir.
+              Moka Dijital olarak, n8n otomasyon platformunu kullanarak işletmenizin tüm tekrarlayan görevlerini otomatikleştiriyoruz.
+            </p>
+            <p>
+              Potansiyel müşteri kazanımından sipariş yönetimine, müşteri ilişkilerinden raporlamaya kadar tüm süreçlerinizi otomatikleştirerek
+              zaman ve maliyet tasarrufu sağlıyoruz. Yapay zeka entegrasyonları ile akıllık ve otomatik kararlar almanızı sağlıyoruz.
+              Bu bizim uzmanlık alanımızdır - işletmenizi daha akıllı, daha hızlı ve daha verimli hale getiriyoruz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ServiceBenefits benefits={benefits} />
+
+      <ServiceProcess steps={steps} />
+
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">İşletmenizi Geleceğe Taşıyın</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                Manuel süreçler, işletmenizin büyümesini yavaşlatan en büyük engellerden biridir.
-                Moka Dijital olarak, n8n otomasyon platformunu kullanarak işletmenizin tüm tekrarlayan görevlerini otomatikleştiriyoruz.
-              </p>
-              <p>
-                Potansiyel müşteri kazanımından sipariş yönetimine, müşteri ilişkilerinden raporlamaya kadar tüm süreçlerinizi otomatize ederek
-                zaman ve maliyet tasarrufu sağlıyoruz. Yapay zeka entegrasyonları ile akıllık ve otomatik kararlar almanızı sağlıyoruz.
-                Bu bizim uzmanlık alanımızdır - işletmenizi daha akıllı, daha hızlı ve daha verimli hale getiriyoruz.
-              </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Otomasyon Danışmanlığı Alın</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              İşletmenizi otomatikleştirmek için n8n uzmanlığımızdan yararlanın.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="px-8">
+                Başlayın
+              </Button>
+              <Button size="lg" variant="outline" className="px-8">
+                Ücretsiz Değerlendirme
+              </Button>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Form yakında eklenecek
+            </p>
           </div>
-        </section>
-
-        {/* Benefits Section */}
-        <ServiceBenefits benefits={benefits} />
-
-        {/* Process Section */}
-        <ServiceProcess steps={steps} />
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Otomasyon Danışmanlığı Alın</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                İşletmenizi otomatikleştirmek için n8n uzmanlığımızdan yararlanın.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8">
-                  Başlayın
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  Ücretsiz Değerlendirme
-                </Button>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Form yakında eklenecek
-              </p>
-            </div>
-          </div>
-        </section>
-      </ServicePageLayout>
-    </>
+        </div>
+      </section>
+    </ServicePageLayout>
+  )
 }
