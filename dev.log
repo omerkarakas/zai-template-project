@@ -1,0 +1,24 @@
+
+> mokadijital-website-project@1.0.0 dev
+> next dev
+
+[35minfo - [next-export-optimize-images]: Configuration was not loaded. (This is optional.)[39m
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+ ⚠ Port 3003 is in use, trying 3004 instead.
+ ⚠ Port 3004 is in use, trying 3005 instead.
+ ⚠ Port 3005 is in use, trying 3006 instead.
+[35minfo - [next-export-optimize-images]: Configuration was not loaded. (This is optional.)[39m
+   ▲ Next.js 15.1.6
+   - Local:        http://localhost:3006
+   - Network:      http://192.168.1.40:3006
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ ○ Compiling /hizmetler/web-gelistirme ...
+ ✓ Compiled /hizmetler/web-gelistirme in 4.3s (659 modules)
+ GET /hizmetler/web-gelistirme 200 in 4808ms
+ ✓ Compiled in 629ms (323 modules)
+ ✓ Compiled in 89ms (309 modules)
+ ✓ Compiled in 571ms (323 modules)
