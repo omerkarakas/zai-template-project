@@ -1,4 +1,5 @@
 import { Code } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
@@ -102,12 +103,12 @@ export default function WebGelistirmePage() {
                 İşletmeniz için özel tasarlanmış modern web sitesi için hemen iletişime geçin.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <Button size="lg" className="px-8">
                   Proje Başlatalım
-                </button>
-                <button className="px-8 py-4 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+                </Button>
+                <Button size="lg" variant="outline" className="px-8">
                   Ücretsiz Teklif
-                </button>
+                </Button>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
                 Form yakında eklenecek
