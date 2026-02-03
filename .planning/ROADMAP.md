@@ -30,7 +30,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. TypeScript, Tailwind CSS ve temel UI component library kurulur ve çalışır
   3. `next-export-optimize-images` plugin'i ile görseller build time'da optimize edilir
   4. Proje lokal development ortamında (`npm run dev`) hatasız çalışır
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Initialize Next.js 15 project with TypeScript, Tailwind CSS, and static export configuration
 
 ### Phase 2: Sayfa Yapısı & İçerik
 **Goal**: Ana sayfa ve 6 hizmet sayfası oluşturulur, tutarlı tasarım dili ve navigasyon uygulanır
@@ -94,7 +97,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Proje Kurulumu & Temel Konfigürasyon | 0/TBD | Not started | - |
+| 1. Proje Kurulumu & Temel Konfigürasyon | 0/1 | Planning complete | - |
 | 2. Sayfa Yapısı & İçerik | 0/TBD | Not started | - |
 | 3. Form Entegrasyonu & n8n Webhook | 0/TBD | Not started | - |
 | 4. SEO & Performans Optimizasyonu | 0/TBD | Not started | - |
