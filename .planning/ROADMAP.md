@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Initialize Next.js 15 project with TypeScript, Tailwind CSS, and static export configuration
+- [x] 01-01-PLAN.md — Initialize Next.js 15 project with TypeScript, Tailwind CSS, and static export configuration
 
 ### Phase 2: Sayfa Yapısı & İçerik
 **Goal**: Ana sayfa ve 6 hizmet sayfası oluşturulur, tutarlı tasarım dili ve navigasyon uygulanır
@@ -48,11 +48,11 @@ Plans:
 **Plans**: 5 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Design System & Navigation (brand colors, Button, Header, Footer)
-- [ ] 02-02-PLAN.md — Shared Service Page Components (ServicePageLayout, ServiceBenefits, ServiceProcess)
-- [ ] 02-03-PLAN.md — Homepage (Hero, ServiceCards, About sections)
-- [ ] 02-04-PLAN.md — Service Pages Batch 1 (Google Isletme, SEO, PMK)
-- [ ] 02-05-PLAN.md — Service Pages Batch 2 (Web Gelistirme, Reklam, Otomasyon)
+- [x] 02-01-PLAN.md — Design System & Navigation (brand colors, Button, Header, Footer)
+- [x] 02-02-PLAN.md — Shared Service Page Components (ServicePageLayout, ServiceBenefits, ServiceProcess)
+- [x] 02-03-PLAN.md — Homepage (Hero, ServiceCards, About sections)
+- [x] 02-04-PLAN.md — Service Pages Batch 1 (Google Isletme, SEO, PMK)
+- [x] 02-05-PLAN.md — Service Pages Batch 2 (Web Gelistirme, Reklam, Otomasyon)
 
 ### Phase 3: Form Entegrasyonu & n8n Webhook
 **Goal**: Her hizmet sayfasına iletişim formu eklenir ve n8n workflow'una entegre edilir
@@ -66,9 +66,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Contact Modal & Form UI Component (Dialog, form fields, shadcn/ui Input/Textarea/Label)
-- [ ] 03-02-PLAN.md — Form Validation & n8n Webhook Integration (Zod schema, React Hook Form, submit handler)
-- [ ] 03-03-PLAN.md — Add Contact Forms to All Service Pages (integrate modal into all pages)
+- [x] 03-01-PLAN.md — Contact Modal & Form UI Component (Dialog, form fields, shadcn/ui Input/Textarea/Label)
+- [x] 03-02-PLAN.md — Form Validation & n8n Webhook Integration (Zod schema, React Hook Form, submit handler)
+- [x] 03-03-PLAN.md — Add Contact Forms to All Service Pages (integrate modal into all pages)
 
 ### Phase 4: SEO & Performans Optimizasyonu
 **Goal**: SEO için meta veriler, sitemap ve performans optimizasyonu yapılır
@@ -79,7 +79,11 @@ Plans:
   2. Sitemap.xml ve robots.txt build time'da oluşturulur ve erişilebilir
   3. Tüm sayfalar Türkçe SEO-friendly URL yapısına sahiptir (/hizmetler/google-isletme-optimizasyonu gibi)
   4. Site Core Web Vitals metriklerini geçer (LCP, FID, CLS)
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — SEO Infrastructure (sitemap.ts, robots.ts, metadata constants, root layout with metadataBase)
+- [ ] 04-02-PLAN.md — Page Metadata Implementation (generateMetadata for all 7 pages using centralized constants)
 
 ### Phase 5: Test & Deploy
 **Goal**: Mobil uyumluluk test edilir, PHP hostinge deploy edilir ve tüm fonksiyonlar doğrulanır
@@ -99,7 +103,7 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. PMK sayfasında ziyaretçi demo formu doldurduğunda canlı lead scoring akışı başlar
   2. Lead'in hangi aşamada olduğunu gösteren real-time status tracking görünür
-  3. n8n workflow'larının görsel gösterimi (workflow visualization) yer alır ve ajansın yetkinliğini sergiler
+  3. n8n workflow'larının görsel gösterimi (workflow visualization) yer alır ve ajansın yeteneklerini sergiler
 **Plans**: TBD
 
 ## Progress
@@ -112,6 +116,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Proje Kurulumu & Temel Konfigürasyon | 1/1 | Complete | 2026-02-03 |
 | 2. Sayfa Yapısı & İçerik | 5/5 | Complete | 2026-02-03 |
 | 3. Form Entegrasyonu & n8n Webhook | 3/3 | Complete | 2026-02-03 |
-| 4. SEO & Performans Optimizasyonu | 0/TBD | Not started | - |
+| 4. SEO & Performans Optimizasyonu | 0/2 | Not started | - |
 | 5. Test & Deploy | 0/TBD | Not started | - |
 | 6. PMK Lead Scoring Demo | 0/TBD | Not started | - |
