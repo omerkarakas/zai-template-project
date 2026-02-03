@@ -49,6 +49,11 @@ Recent decisions affecting current work:
 - Simplified ESLint config to next/core-web-vitals only (removed @typescript-eslint rules requiring additional plugin)
 - Set lang='tr' for Turkish content in root layout
 
+**From Phase 2 Plan 01:**
+- Updated globals.css with Moka Dijital brand colors (gradient + accent)
+- Created shadcn/ui Button component with all variants
+- Built responsive Header and Footer layout components
+
 **From Phase 2 Plan 02:**
 - Created lucide-react dependency for service component icons
 - Established consistent component naming pattern (Service*)

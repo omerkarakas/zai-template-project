@@ -1,0 +1,9 @@
+  🔄 Sonraki adım:
+  - /gsd:discuss-phase 1 — Phase 1 için planlama öncesi context   
+  toplama
+  - Veya /gsd:plan-phase 1 — Direkt planlamaya başlama
+
+  Yeni bir session'da devam etmek için:
+  /gsd:progress
+  Bu komut projenin güncel durumunu gösterir ve bir sonraki adımda
+   yönlendirir.

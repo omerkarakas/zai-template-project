@@ -1,12 +1,24 @@
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/home/Hero';
+import ServiceCards from '@/components/home/ServiceCards';
+import About from '@/components/home/About';
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">Moka Dijital</h1>
-        <p className="mt-4 text-muted-foreground">
-          Dönüşüm Odaklı Web Sitesi
-        </p>
-      </div>
-    </main>
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Header (sticky) */}
+      <Header />
+
+      {/* Main content */}
+      <main className="flex-grow">
+        <Hero />
+        <ServiceCards />
+        <About />
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }
