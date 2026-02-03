@@ -57,57 +57,53 @@ export default function PmkPage() {
 
   return (
     <ServicePageLayout
-        title="Potansiyel Müşteri Kazanımı"
-        description="n8n workflow otomasyonları ile sıcak leadler elde edin, satış döngünüzü hızlandırın"
-        icon={<Target className="w-10 h-10" />}
-      >
-        {/* Description Section */}
-        <section className="mb-20">
+      title="Potansiyel Müşteri Kazanımı"
+      description="n8n workflow otomasyonları ile sıcak leadler elde edin, satış döngünüzü hızlandırın"
+      icon={<Target className="w-10 h-10" />}
+    >
+      <section className="mb-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Geleceğin Satış Sistemi: Akıllı Lead Kazanımı</h2>
+          <div className="space-y-6 text-lg text-muted-foreground">
+            <p>
+              Moka Dijital'in uzmanlık alanı olan Potansiyel Müşteri Kazanımı (PMK) sistemi, n8n otomasyon platformu sayesinde
+              web sitenizden gelen her ziyaretçiyi potansiyel müşteriye dönüştürür. Akıllı lead skorlama sistemi ile
+              en sıcak müşterileri belirleyerek satış ekibinizin zamanını ve enerjisini verimli kullanmasını sağlıyoruz.
+            </p>
+            <p>
+              WhatsApp entegrasyonumuz ile müşterilerinizle kişiselleştirilmiş ve anlık iletişim kurarak
+              dönüşüm oranlarınızı katlayın. Bu sistem, Moka Dijital'in dijital pazarlamada rakipsiz avantajını
+              sunan, özel geliştirdiğimiz çözümdür.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <ServiceBenefits benefits={benefits} />
+
+      <ServiceProcess steps={steps} />
+
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Geleceğin Satış Sistemi: Akıllı Lead Kazanımı</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                Moka Dijital'in uzmanlık alanı olan Potansiyel Müşteri Kazanımı (PMK) sistemi, n8n otomasyon platformu sayesinde
-                web sitenizden gelen her ziyaretçiyi potansiyel müşteriye dönüştürür. Akıllı lead skorlama sistemi ile
-                en sıcak müşterileri belirleyerek satış ekibinizin zamanını ve enerjisini verimli kullanmasını sağlıyoruz.
-              </p>
-              <p>
-                WhatsApp entegrasyonumuz ile müşterilerinizle kişiselleştirilmiş ve anlık iletişim kurarak
-                dönüşüm oranlarınızı katlayın. Bu sistem, Moka Dijital'in dijital pazarlamada rakipsiz avantajını
-                sunan, özel geliştirdiğimiz çözümdür.
-              </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Satış Döngünüzü Hızlandırın</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              n8n tabanlı otomasyon sistemimizle daha çok sıcak müşteri edinin, satış sürenizi kısaltın.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="px-8">
+                Demo Talep Edin
+              </Button>
+              <Button size="lg" variant="outline" className="px-8">
+                Sistemi İnceleyin
+              </Button>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Yakında interaktif demo deneyimi eklenecek
+            </p>
           </div>
-        </section>
-
-        {/* Benefits Section */}
-        <ServiceBenefits benefits={benefits} />
-
-        {/* Process Section */}
-        <ServiceProcess steps={steps} />
-
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Satış Döngünüzü Hızlandırın</h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                n8n tabanlı otomasyon sistemimizle daha çok sıcak müşteri edinin, satış sürenizi kısaltın.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8">
-                  Demo Talep Edin
-                </Button>
-                <Button size="lg" variant="outline" className="px-8">
-                  Sistemi İnceleyin
-                </Button>
-              </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Yakında interaktif demo deneyimi eklenecek
-              </p>
-            </div>
-          </div>
-        </section>
-      </ServicePageLayout>
-    </>
+        </div>
+      </section>
+    </ServicePageLayout>
+  )
 }
