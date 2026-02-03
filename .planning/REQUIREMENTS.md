@@ -31,11 +31,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### İletişim Formları
 
-- [ ] **FORM-01**: Her hizmet sayfasında iletişim formu yer alır
-- [ ] **FORM-02**: İletişim formları n8n webhook'una entegre edilir
-- [ ] **FORM-03**: Formlarda React Hook Form + Zod validasyonu çalışır
-- [ ] **FORM-04**: Formlarda success/error durumları gösterilir
-- [ ] **FORM-05**: Formlarda loading state gösterilir
+- [x] **FORM-01**: Her hizmet sayfasında iletişim formu yer alır
+- [x] **FORM-02**: İletişim formları n8n webhook'una entegre edilir
+- [x] **FORM-03**: Formlarda React Hook Form + Zod validasyonu çalışır
+- [x] **FORM-04**: Formlarda success/error durumları gösterilir
+- [x] **FORM-05**: Formlarda loading state gösterilir
 
 ### PMK Demo Özellikleri
 
@@ -124,11 +124,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DSGN-01 | Phase 2 | Pending |
 | DSGN-02 | Phase 2 | Pending |
 | DSGN-03 | Phase 2 | Pending |
-| FORM-01 | Phase 3 | Pending |
-| FORM-02 | Phase 3 | Pending |
-| FORM-03 | Phase 3 | Pending |
-| FORM-04 | Phase 3 | Pending |
-| FORM-05 | Phase 3 | Pending |
+| FORM-01 | Phase 3 | Complete |
+| FORM-02 | Phase 3 | Complete |
+| FORM-03 | Phase 3 | Complete |
+| FORM-04 | Phase 3 | Complete |
+| FORM-05 | Phase 3 | Complete |
 | TECH-02 | Phase 1 | Complete |
 | TECH-04 | Phase 4 | Pending |
 | TECH-05 | Phase 4 | Pending |
