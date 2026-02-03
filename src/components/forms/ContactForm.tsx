@@ -41,7 +41,7 @@ export function ContactForm({
       sirket: "",
       website: "",
       mesaj: "",
-      gizlilik: false,
+      gizlilik: false as unknown as true, // Workaround: checkbox will be true when checked
       service: serviceName || "",
     },
   })
@@ -115,7 +115,7 @@ export function ContactForm({
             placeholder="Adınız Soyadınız"
             disabled={isDisabled}
             className={cn(errors.isim && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={errors.isim ? "true" : "undefined"}
+            aria-invalid={!!errors.isim}
           />
           {errors.isim && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -137,7 +137,7 @@ export function ContactForm({
             placeholder="05XX XXX XX XX"
             disabled={isDisabled}
             className={cn(errors.telefon && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={errors.telefon ? "true" : "undefined"}
+            aria-invalid={!!errors.telefon}
           />
           {errors.telefon && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -159,7 +159,7 @@ export function ContactForm({
             placeholder="email@example.com"
             disabled={isDisabled}
             className={cn(errors.email && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={errors.email ? "true" : "undefined"}
+            aria-invalid={!!errors.email}
           />
           {errors.email && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -181,7 +181,7 @@ export function ContactForm({
             placeholder="Şirketinizin adı"
             disabled={isDisabled}
             className={cn(errors.sirket && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={errors.sirket ? "true" : "undefined"}
+            aria-invalid={!!errors.sirket}
           />
           {errors.sirket && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -201,7 +201,7 @@ export function ContactForm({
             placeholder="https://example.com"
             disabled={isDisabled}
             className={cn(errors.website && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={errors.website ? "true" : "undefined"}
+            aria-invalid={!!errors.website}
           />
           {errors.website && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -223,7 +223,7 @@ export function ContactForm({
               errors.mesaj && "border-destructive focus-visible:ring-destructive"
             )}
             disabled={isDisabled}
-            aria-invalid={errors.mesaj ? "true" : "undefined"}
+            aria-invalid={!!errors.mesaj}
           />
           {errors.mesaj && (
             <p className="text-sm text-destructive flex items-center gap-1">
@@ -245,7 +245,7 @@ export function ContactForm({
             "mt-0.5 h-4 w-4 shrink-0 rounded border-input text-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
             errors.gizlilik && "border-destructive"
           )}
-          aria-invalid={errors.gizlilik ? "true" : "undefined"}
+          aria-invalid={!!errors.gizlilik}
         />
         <Label
           htmlFor="gizlilik"

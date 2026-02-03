@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ContactForm, ContactFormProps } from "./ContactForm"
+import { ContactForm } from "./ContactForm"
 
 export interface ContactModalProps {
   open: boolean
