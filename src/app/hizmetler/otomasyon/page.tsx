@@ -1,4 +1,4 @@
-import { Bot, Zap } from 'lucide-react'
+import { Bot } from 'lucide-react'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
