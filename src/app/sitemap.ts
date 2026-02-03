@@ -5,6 +5,8 @@ import { HOMEPAGE_METADATA, SERVICE_METADATA } from '@/lib/metadata';
  * Build-time sitemap generation
  * Returns all 7 static routes: homepage + 6 service pages
  */
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mokadijital.com';
 
@@ -12,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const homepageEntry = {
     url: baseUrl,
     lastModified: new Date(),
-    changeFrequency: HOMEPAGE_METADATA.changeFrequency as const,
+    changeFrequency: HOMEPAGE_METADATA.changeFrequency,
     priority: HOMEPAGE_METADATA.priority,
   };
 
@@ -20,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceEntries = Object.values(SERVICE_METADATA).map((service) => ({
     url: `${baseUrl}/hizmetler/${service.slug}`,
     lastModified: new Date(),
-    changeFrequency: service.changeFrequency as const,
+    changeFrequency: service.changeFrequency,
     priority: service.priority,
   }));
 
