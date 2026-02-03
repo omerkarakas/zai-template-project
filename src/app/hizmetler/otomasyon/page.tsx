@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
-import ContactModal from '@/components/forms/ContactModal'
+import { ContactModal } from '@/components/forms/ContactModal'
 
 export default function OtomasyonPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)

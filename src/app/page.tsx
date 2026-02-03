@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Hero from '@/components/home/Hero'
 import ServiceCards from '@/components/home/ServiceCards'
 import About from '@/components/home/About'
-import ContactModal from '@/components/forms/ContactModal'
+import { ContactModal } from '@/components/forms/ContactModal'
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
