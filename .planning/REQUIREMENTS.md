@@ -129,7 +129,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORM-03 | Phase 3 | Pending |
 | FORM-04 | Phase 3 | Pending |
 | FORM-05 | Phase 3 | Pending |
-| TECH-02 | Phase 1 | Pending |
+| TECH-02 | Phase 1 | Complete |
 | TECH-04 | Phase 4 | Pending |
 | TECH-05 | Phase 4 | Pending |
 | TECH-03 | Phase 4 | Pending |
