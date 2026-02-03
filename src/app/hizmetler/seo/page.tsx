@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
 export default function SeoPage() {
   const benefits = [
@@ -63,9 +61,7 @@ export default function SeoPage() {
   ]
 
   return (
-    <>
-      <Header />
-      <ServicePageLayout
+    <ServicePageLayout
         title="Yerel SEO & Global SEO"
         description="Hedef kitlenize ulaşın: Yerel işletmeler için yerel SEO, global markalar için uluslararası SEO"
         icon={<Search className="w-10 h-10" />}
@@ -117,7 +113,5 @@ export default function SeoPage() {
           </div>
         </section>
       </ServicePageLayout>
-      <Footer />
     </>
-  )
 }

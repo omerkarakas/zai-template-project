@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
 export default function OtomasyonPage() {
   const benefits = [
@@ -63,9 +61,7 @@ export default function OtomasyonPage() {
   ]
 
   return (
-    <>
-      <Header />
-      <ServicePageLayout
+    <ServicePageLayout
         title="İş Akışı ve AI Otomasyonları"
         description="n8n ile işletmenizin manuel süreçlerini otomatikleştirin, zaman ve maliyet tasarrufu sağlayın"
         icon={<Bot className="w-10 h-10" />}
@@ -117,7 +113,5 @@ export default function OtomasyonPage() {
           </div>
         </section>
       </ServicePageLayout>
-      <Footer />
     </>
-  )
 }

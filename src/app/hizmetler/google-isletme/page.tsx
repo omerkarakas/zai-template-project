@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
 export default function GoogleIsletmePage() {
   const benefits = [
@@ -58,9 +56,7 @@ export default function GoogleIsletmePage() {
   ]
 
   return (
-    <>
-      <Header />
-      <ServicePageLayout
+    <ServicePageLayout
         title="Google İşletme Optimizasyonu"
         description="İşletmenizin Google İşletme Profili'ni optimize ederek yerel aramalarda öne çıkarın"
         icon={<MapPin className="w-10 h-10" />}
@@ -112,7 +108,5 @@ export default function GoogleIsletmePage() {
           </div>
         </section>
       </ServicePageLayout>
-      <Footer />
     </>
-  )
 }

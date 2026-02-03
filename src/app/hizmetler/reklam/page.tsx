@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
 export default function ReklamPage() {
   const benefits = [
@@ -63,9 +61,7 @@ export default function ReklamPage() {
   ]
 
   return (
-    <>
-      <Header />
-      <ServicePageLayout
+    <ServicePageLayout
         title="Dijital Reklam Yönetimi"
         description="Google Ads, Meta Ads ve LinkedIn reklamları ile hedef kitlenize ulaşın, ROI'nizi artırın"
         icon={<Megaphone className="w-10 h-10" />}
@@ -117,7 +113,5 @@ export default function ReklamPage() {
           </div>
         </section>
       </ServicePageLayout>
-      <Footer />
     </>
-  )
 }
