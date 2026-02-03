@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-02)
 
 **Core value:** Ziyaretçileri potansiyel müşteriye dönüştüren, her hizmet sayfasında doğrudan iletişim imkanı sunan, ajansın yeteneklerini (özellikle n8n ile Potansiyel Müşteri Kazanımı sistemini) showcase eden dönüşüm odaklı web sitesi.
-**Current focus:** Phase 3 COMPLETE - Ready for Phase 4
+**Current focus:** Phase 4 - SEO & Performans Optimizasyonu
 
 ## Current Position
 
-Phase: 3 of 6 (complete)
-Plan: 3 of 3 complete
-Status: Phase 3 complete and verified - All contact forms integrated, n8n webhook configured, goal verified (4/4 must-haves)
-Last activity: 2026-02-03 — Phase 3 verification passed, ready for Phase 4
+Phase: 4 of 6 (in progress)
+Plan: 1 of ? complete
+Status: Phase 4 Plan 01 complete - SEO infrastructure established (sitemap, robots.txt, metadata constants, metadataBase)
+Last activity: 2026-02-04 — Completed 04-01: SEO Infrastructure
 
-Progress: [█████████░] 50% (3 of 6 phases complete, 9 of ~10+ plans complete)
+Progress: [██████████] 55% (3 of 6 phases complete, 10 of ~12+ plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: 6 min
-- Total execution time: 0.9 hours
+- Total execution time: 1.0 hours
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [█████████░] 50% (3 of 6 phases complete, 9 of ~10
 | 01-project-setup | 1 | 1 | 7 min |
 | 02-page-structure-content | 5 | 5 | 6 min |
 | 03-form-entegrasyonu | 3 | 3 | 6 min |
+| 04-seo-&-performans-optimizasyonu | 1 | 1 | 7 min |
 
 **Recent Trend:**
-- Last 5 plans: 5 min (03-03), 4 min (03-02), 4 min (03-01), 5 min (02-05), 8 min (02-04)
+- Last 5 plans: 7 min (04-01), 5 min (03-03), 4 min (03-02), 4 min (03-01), 5 min (02-05)
 - Trend: Efficient delivery, maintaining pace
 
 *Updated after each plan completion*
@@ -100,6 +101,14 @@ Recent decisions affecting current work:
 - VERIFICATION.md created with 4/4 score, status: passed
 - 15 files verified (components, pages, schemas, handlers, env config)
 
+**From Phase 4 Plan 01:**
+- Created centralized metadata constants in src/lib/metadata/index.ts with ServiceMetadata interface
+- Added HOMEPAGE_METADATA and SERVICE_METADATA for all 6 services (Google İşletme, SEO, PMK, Web Geliştirme, Reklam, Otomasyon)
+- Created build-time sitemap.ts and robots.ts with export const dynamic = 'force-static' for static export
+- Updated root layout with metadataBase for absolute URL generation
+- Added NEXT_PUBLIC_BASE_URL to .env.local (https://mokadijital.com)
+- Single /og-image.jpg fallback for all pages (deferred per-page OG images per CONTEXT)
+
 **Tech Stack Established:**
 - Next.js 15.1.6, React 19, TypeScript 5.7.2
 - Tailwind CSS 3.4.17 with shadcn/ui theming system
@@ -121,6 +130,7 @@ Recent decisions affecting current work:
 **Libraries Created:**
 - src/lib/forms/contactSchema.ts: Zod validation schema with Turkish phone regex
 - src/lib/forms/submitContactForm.ts: n8n webhook submit handler with metadata
+- src/lib/metadata/index.ts: Centralized SEO metadata constants with ServiceMetadata interface
 
 **Service Pages Created:**
 - Google İşletme Optimizasyonu: Complete service page with 6 benefits, 4 steps, contact modal
@@ -132,7 +142,9 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-**Phase 3 Complete and Verified!** Ready for Phase 4: SEO & Performans Optimizasyonu.
+**Phase 4 Plan 01 Complete!** SEO infrastructure established with sitemap.xml, robots.txt, centralized metadata, and metadataBase.
+
+**Next:** Phase 4 Plan 02 - Page-level metadata implementation with generateMetadata functions.
 
 **Before Production:**
 - Activate n8n webhook workflow in UI
@@ -152,6 +164,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-02-03
-Stopped at: Phase 3 COMPLETE - All contact forms integrated, n8n workflow created, verification passed
-Resume file: .planning/phases/03-form-entegrasyonu-&-n8n-webhook/03-form-entegrasyonu-&-n8n-webhook-VERIFICATION.md
+Last session: 2026-02-04
+Stopped at: Completed 04-01 - SEO Infrastructure
+Resume file: .planning/phases/04-seo-&-performans-optimizasyonu/04-01-SUMMARY.md
