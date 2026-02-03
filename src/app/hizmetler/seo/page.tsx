@@ -1,10 +1,17 @@
+'use client'
+
+import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
+import ContactModal from '@/components/forms/ContactModal'
 
 export default function SeoPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const serviceName = 'Yerel SEO & Global SEO'
+
   const benefits = [
     {
       title: "Google arama sonuçlarında üst sıralara yükselme",
@@ -95,19 +102,31 @@ export default function SeoPage() {
               Uzman SEO ekibimiz ile hedef kitlenize ulaşın, organik trafiğinizi katlayın.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8">
-                Ücretsiz SEO Analizi İsteyin
+              <Button
+                size="lg"
+                className="px-8"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Hemen Başlayın
               </Button>
-              <Button size="lg" variant="outline" className="px-8">
-                SEO Stratejisi Oluşturun
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Ücretsiz Danışmanlık
               </Button>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Form yakında eklenecek
-            </p>
           </div>
         </div>
       </section>
+
+      <ContactModal
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        serviceName={serviceName}
+      />
     </ServicePageLayout>
   )
 }

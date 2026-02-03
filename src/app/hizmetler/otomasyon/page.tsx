@@ -1,10 +1,17 @@
+'use client'
+
+import { useState } from 'react'
 import { Bot } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ServicePageLayout from '@/components/services/ServicePageLayout'
 import ServiceBenefits from '@/components/services/ServiceBenefits'
 import ServiceProcess from '@/components/services/ServiceProcess'
+import ContactModal from '@/components/forms/ContactModal'
 
 export default function OtomasyonPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const serviceName = 'İş Akışı ve AI Otomasyonları'
+
   const benefits = [
     {
       title: "Manuel işlerin otomasyonu ile zaman tasarrufu",
@@ -95,19 +102,31 @@ export default function OtomasyonPage() {
               İşletmenizi otomatikleştirmek için n8n uzmanlığımızdan yararlanın.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8">
-                Başlayın
+              <Button
+                size="lg"
+                className="px-8"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Hemen Başlayın
               </Button>
-              <Button size="lg" variant="outline" className="px-8">
-                Ücretsiz Değerlendirme
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-8"
+                onClick={() => setIsModalOpen(true)}
+              >
+                Ücretsiz Danışmanlık
               </Button>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Form yakında eklenecek
-            </p>
           </div>
         </div>
       </section>
+
+      <ContactModal
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        serviceName={serviceName}
+      />
     </ServicePageLayout>
   )
 }
