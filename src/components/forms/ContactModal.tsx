@@ -26,40 +26,18 @@ export function ContactModal({
   serviceName,
   title = "İletişim Formu",
 }: ContactModalProps) {
-  const [loading, setLoading] = React.useState(false)
-  const [success, setSuccess] = React.useState(false)
-  const [error, setError] = React.useState<string | undefined>(undefined)
+  // Handle form success - auto-close modal after 3 seconds
+  const handleSuccess = React.useCallback(() => {
+    setTimeout(() => {
+      onOpenChange(false)
+    }, 3000)
+  }, [onOpenChange])
 
-  // Reset states when modal opens
-  React.useEffect(() => {
-    if (open) {
-      setLoading(false)
-      setSuccess(false)
-      setError(undefined)
-    }
-  }, [open])
-
-  const handleSubmit: ContactFormProps["onSubmit"] = async (_data) => {
-    setLoading(true)
-    setError(undefined)
-
-    try {
-      // TODO: Integrate with n8n webhook in plan 03-02
-      // For now, just simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      setSuccess(true)
-
-      // Auto-close modal after 3 seconds on success
-      setTimeout(() => {
-        onOpenChange(false)
-      }, 3000)
-    } catch (err) {
-      setError("Bir sorun oluştu, lütfen tekrar deneyin.")
-    } finally {
-      setLoading(false)
-    }
-  }
+  // Handle form error - errors are displayed inside the form
+  const handleError = React.useCallback((_error: string) => {
+    // Error state is managed internally by ContactForm
+    // This callback is provided for parent components if needed
+  }, [])
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -84,14 +62,12 @@ export function ContactModal({
             </DialogPrimitive.Close>
           </div>
 
-          {/* ContactForm with relative positioning for loading overlay */}
-          <div className="relative mt-4">
+          {/* ContactForm - manages its own loading, success, and error states */}
+          <div className="mt-4">
             <ContactForm
               serviceName={serviceName}
-              onSubmit={handleSubmit}
-              loading={loading}
-              success={success}
-              error={error}
+              onSuccess={handleSuccess}
+              onError={handleError}
             />
           </div>
         </DialogContent>
