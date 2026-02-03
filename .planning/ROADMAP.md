@@ -45,7 +45,14 @@ Plans:
   3. Her hizmet sayfasında hizmet açıklaması, faydalar, süreç gösterimi ve net CTA butonları yer alır
   4. Tüm sayfalarda Moka Dijital logosu, tutarlı renk paleti ve tipografi kullanılır
   5. Header menüsünden tüm sayfalara navigasyon yapılabilir, footer tüm sayfalarda tutarlıdır
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Design System & Navigation (brand colors, Button, Header, Footer)
+- [ ] 02-02-PLAN.md — Shared Service Page Components (ServicePageLayout, ServiceBenefits, ServiceProcess)
+- [ ] 02-03-PLAN.md — Homepage (Hero, ServiceCards, About sections)
+- [ ] 02-04-PLAN.md — Service Pages Batch 1 (Google Isletme, SEO, PMK)
+- [ ] 02-05-PLAN.md — Service Pages Batch 2 (Web Gelistirme, Reklam, Otomasyon)
 
 ### Phase 3: Form Entegrasyonu & n8n Webhook
 **Goal**: Her hizmet sayfasına iletişim formu eklenir ve n8n workflow'una entegre edilir
@@ -98,7 +105,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Proje Kurulumu & Temel Konfigürasyon | 1/1 | Complete | 2026-02-03 |
-| 2. Sayfa Yapısı & İçerik | 0/TBD | Not started | - |
+| 2. Sayfa Yapısı & İçerik | 0/5 | Not started | - |
 | 3. Form Entegrasyonu & n8n Webhook | 0/TBD | Not started | - |
 | 4. SEO & Performans Optimizasyonu | 0/TBD | Not started | - |
 | 5. Test & Deploy | 0/TBD | Not started | - |
