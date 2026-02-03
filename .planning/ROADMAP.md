@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Proje Kurulumu & Temel Konfigürasyon** - Next.js statik export ile çalışacak proje yapısı kurulur
 - [x] **Phase 2: Sayfa Yapısı & İçerik** - Ana sayfa ve 6 hizmet sayfası oluşturulur, tasarım dili uygulanır
 - [x] **Phase 3: Form Entegrasyonu & n8n Webhook** - Tüm sayfalara iletişim formları eklenir ve n8n'a bağlanır
-- [ ] **Phase 4: SEO & Performans Optimizasyonu** - Meta veriler, sitemap ve performans optimizasyonu yapılır
+- [x] **Phase 4: SEO & Performans Optimizasyonu** - Meta veriler, sitemap ve performans optimizasyonu yapılır
 - [ ] **Phase 5: Test & Deploy** - Mobil uyumluluk testi, cPanel deploy ve son kontroller yapılır
 - [ ] **Phase 6: PMK Lead Scoring Demo** - Potansiyel Müşteri Kazanımı sayfasına interaktif demo eklenir
 
@@ -82,8 +82,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — SEO Infrastructure (sitemap.ts, robots.ts, metadata constants, root layout with metadataBase)
-- [ ] 04-02-PLAN.md — Page Metadata Implementation (generateMetadata for all 7 pages using centralized constants)
+- [x] 04-01-PLAN.md — SEO Infrastructure (sitemap.ts, robots.ts, metadata constants, root layout with metadataBase)
+- [x] 04-02-PLAN.md — Page Metadata Implementation (generateMetadata for all 7 pages using centralized constants)
 
 ### Phase 5: Test & Deploy
 **Goal**: Mobil uyumluluk test edilir, PHP hostinge deploy edilir ve tüm fonksiyonlar doğrulanır
@@ -116,6 +116,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Proje Kurulumu & Temel Konfigürasyon | 1/1 | Complete | 2026-02-03 |
 | 2. Sayfa Yapısı & İçerik | 5/5 | Complete | 2026-02-03 |
 | 3. Form Entegrasyonu & n8n Webhook | 3/3 | Complete | 2026-02-03 |
-| 4. SEO & Performans Optimizasyonu | 0/2 | Not started | - |
+| 4. SEO & Performans Optimizasyonu | 2/2 | Complete | 2026-02-04 |
 | 5. Test & Deploy | 0/TBD | Not started | - |
 | 6. PMK Lead Scoring Demo | 0/TBD | Not started | - |
