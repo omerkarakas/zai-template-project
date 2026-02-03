@@ -60,10 +60,15 @@ Plans:
 **Requirements**: FORM-01, FORM-02, FORM-03, FORM-04, FORM-05
 **Success Criteria** (what must be TRUE):
   1. Her hizmet sayfasında çalışan bir iletişim formu yer alır
-  2. Form提交ıldığında veri n8n webhook'una POST edilir ve n8n workflow çalışır
+  2. Form doldurulduğunda veri n8n webhook'una POST edilir ve n8n workflow çalışır
   3. Form validasyonu (React Hook Form + Zod) çalışır, geçersiz veri gönderilemez
-  4. Form提交ıldığında loading state gösterilir, başarılı/başarısız durumları kullanıcıya bildirilir
-**Plans**: TBD
+  4. Form doldurulduğunda loading state gösterilir, başarılı/başarısız durumları kullanıcıya bildirilir
+**Plans**: 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Contact Modal & Form UI Component (Dialog, form fields, shadcn/ui Input/Textarea/Label)
+- [ ] 03-02-PLAN.md — Form Validation & n8n Webhook Integration (Zod schema, React Hook Form, submit handler)
+- [ ] 03-03-PLAN.md — Add Contact Forms to All Service Pages (integrate modal into all pages)
 
 ### Phase 4: SEO & Performans Optimizasyonu
 **Goal**: SEO için meta veriler, sitemap ve performans optimizasyonu yapılır
@@ -106,7 +111,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Proje Kurulumu & Temel Konfigürasyon | 1/1 | Complete | 2026-02-03 |
 | 2. Sayfa Yapısı & İçerik | 5/5 | Complete | 2026-02-03 |
-| 3. Form Entegrasyonu & n8n Webhook | 0/TBD | Not started | - |
+| 3. Form Entegrasyonu & n8n Webhook | 0/3 | Not started | - |
 | 4. SEO & Performans Optimizasyonu | 0/TBD | Not started | - |
 | 5. Test & Deploy | 0/TBD | Not started | - |
 | 6. PMK Lead Scoring Demo | 0/TBD | Not started | - |
