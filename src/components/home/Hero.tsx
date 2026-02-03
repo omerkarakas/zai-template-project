@@ -1,10 +1,14 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import React from 'react'
+import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
 
-export default function Hero() {
+interface HeroProps {
+  onContactClick?: () => void
+}
+
+export default function Hero({ onContactClick }: HeroProps) {
   return (
     <section className="relative bg-background py-20 md:py-32">
       {/* Optional: Subtle gradient background */}
@@ -31,14 +35,7 @@ export default function Hero() {
             <Button
               size="lg"
               className="group"
-              onClick={() => {
-                const servicesSection = document.getElementById('services');
-                if (servicesSection) {
-                  servicesSection.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                  window.location.href = '#services';
-                }
-              }}
+              onClick={onContactClick}
             >
               Hizmetlerimizi İnceleyin
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -55,5 +52,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
+  )
 }
