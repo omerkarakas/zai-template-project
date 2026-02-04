@@ -23,9 +23,9 @@ export default function Hero({ onContactClick }: HeroProps) {
           <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Gradient overlay - light theme */}
-        <div className="dark:hidden absolute inset-0 bg-gradient-to-br from-blue-50/95 via-indigo-50/95 to-purple-50/95" />
+        <div className="dark:hidden absolute inset-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/70 to-purple-50/70" />
         {/* Gradient overlay - dark theme */}
-        <div className="hidden dark:block absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-950/95 to-slate-900/95" />
+        <div className="hidden dark:block absolute inset-0 bg-gradient-to-br from-slate-900/70 via-purple-950/70 to-slate-900/70" />
       </div>
 
       <div className="container mx-auto px-4">
