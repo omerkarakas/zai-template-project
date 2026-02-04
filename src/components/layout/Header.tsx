@@ -4,19 +4,31 @@ import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Services for dropdown
+  const services = [
+    { name: 'Google İşletme Optimizasyonu', href: '/hizmetler/google-isletme-optimizasyonu' },
+    { name: 'Yerel SEO & Global SEO', href: '/hizmetler/seo' },
+    { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
+    { name: 'Web Sitesi Geliştirme', href: '/hizmetler/web-gelistirme' },
+    { name: 'Dijital Reklam Yönetimi', href: '/hizmetler/reklam' },
+    { name: 'İş Akışı ve AI Otomasyonları', href: '/hizmetler/otomasyon' },
+  ];
+
+  // Main navigation
   const navigation = [
     { name: 'Ana Sayfa', href: '/' },
-    { name: 'Google İşletme Optimizasyonu', href: '/hizmetler/google-isletme' },
-    { name: 'Yerel SEO', href: '/hizmetler/seo' },
-    { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
-    { name: 'Web Geliştirme', href: '/hizmetler/web-gelistirme' },
-    { name: 'Dijital Reklam Yönetimi', href: '/hizmetler/reklam' },
-    { name: 'Otomasyon', href: '/hizmetler/otomasyon' },
+    { name: 'Hizmetler', hasDropdown: true },
   ];
 
   return (
@@ -34,15 +46,41 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.hasDropdown ? (
+                <DropdownMenu key={item.name}>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-1"
+                    >
+                      {item.name}
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    {services.map((service) => (
+                      <DropdownMenuItem key={service.name} asChild>
+                        <Link
+                          href={service.href}
+                          className="text-sm cursor-pointer"
+                        >
+                          {service.name}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Mobile menu button */}
@@ -66,16 +104,40 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <nav className="space-y-1 py-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) =>
+                item.hasDropdown ? (
+                  <div key={item.name}>
+                    <button
+                      className="w-full text-left px-3 py-2 text-sm font-medium text-foreground bg-transparent border-none flex items-center justify-between"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                    <div className="pl-6 pb-2 space-y-1">
+                      {services.map((service) => (
+                        <Link
+                          key={service.name}
+                          href={service.href}
+                          className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
             </nav>
           </div>
         )}
