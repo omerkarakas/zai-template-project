@@ -1,16 +1,36 @@
 'use client'
 
 import React from 'react'
+import {
+  Search,
+  Settings,
+  Rocket,
+  CheckCircle2,
+  BarChart3,
+  Trophy,
+  type LucideIcon
+} from 'lucide-react'
 
 interface ProcessStep {
   step: number
   title: string
   description: string
+  icon?: LucideIcon
 }
 
 interface ServiceProcessProps {
   steps: ProcessStep[]
   title?: string
+}
+
+// Default icons for each step position
+const defaultIcons: Record<number, LucideIcon> = {
+  1: Search,
+  2: Settings,
+  3: Rocket,
+  4: CheckCircle2,
+  5: BarChart3,
+  6: Trophy,
 }
 
 export default function ServiceProcess({
@@ -31,13 +51,103 @@ export default function ServiceProcess({
           {/* Desktop: Horizontal Flow with Arrow Connectors */}
           <div className="hidden lg:block">
             <div className="flex items-center justify-center gap-8 flex-wrap">
-              {steps.map((step, index) => (
-                <React.Fragment key={step.step}>
-                  {/* Process Card with Arrow Shape */}
-                  <div className="relative group flex items-center">
-                    {/* Arrow Connector from Previous */}
-                    {index > 0 && (
-                      <div className="absolute -left-10 top-1/2 -translate-y-1/2 z-10">
+              {steps.map((step, index) => {
+                const IconComponent = step.icon || defaultIcons[step.step] || Search
+
+                return (
+                  <React.Fragment key={step.step}>
+                    <div className="relative flex items-center">
+                      {/* Card */}
+                      <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-64 shadow-lg hover:shadow-xl">
+                        {/* Step Indicator */}
+                        <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                          {step.step}
+                        </div>
+
+                        {/* Icon */}
+                        <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-lg">
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="pt-3">
+                          <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Arrow to Next (only if not last) */}
+                      {index < steps.length - 1 && (
+                        <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10 ml-8">
+                          <svg
+                            width="60"
+                            height="24"
+                            viewBox="0 0 60 24"
+                            fill="none"
+                            className="text-primary/40"
+                          >
+                            <path
+                              d="M0 12 L50 12"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                            />
+                            <path
+                              d="M40 6 L54 12 L40 18"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              fill="none"
+                            />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </React.Fragment>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Tablet: 2-Column Grid with Arrows */}
+          <div className="hidden md:block lg:hidden">
+            <div className="grid grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
+              {steps.map((step, index) => {
+                const IconComponent = step.icon || defaultIcons[step.step] || Search
+
+                return (
+                  <div key={step.step} className="relative flex items-center">
+                    {/* Card */}
+                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
+                      {/* Step Badge */}
+                      <div className="absolute -top-2 -left-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold shadow-lg">
+                        {step.step}
+                      </div>
+
+                      {/* Icon */}
+                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
+                        <IconComponent className="w-4 h-4" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="pt-3">
+                        <h3 className="text-base font-semibold mb-2 leading-tight">
+                          {step.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Arrow to Next (odd items that have a next card) */}
+                    {index % 2 === 1 && index < steps.length - 1 && (
+                      <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
                         <svg
                           width="60"
                           height="24"
@@ -62,43 +172,63 @@ export default function ServiceProcess({
                         </svg>
                       </div>
                     )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
 
+          {/* Mobile: Vertical Cards with Arrow Connectors */}
+          <div className="md:hidden">
+            <div className="max-w-md mx-auto space-y-6">
+              {steps.map((step, index) => {
+                const IconComponent = step.icon || defaultIcons[step.step] || Search
+
+                return (
+                  <div key={step.step} className="relative">
                     {/* Card */}
-                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-8 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-72 shadow-lg hover:shadow-xl">
-                      {/* Step Indicator */}
-                      <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                        {step.step}
+                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all shadow-lg">
+                      {/* Header with Step and Icon */}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-md">
+                            {step.step}
+                          </div>
+                          <h3 className="text-lg font-semibold">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
+                          <IconComponent className="w-4 h-4" />
+                        </div>
                       </div>
 
-                      {/* Content */}
-                      <div className="pt-2">
-                        <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
+                      {/* Description */}
+                      <p className="text-sm text-muted-foreground leading-relaxed pl-11">
+                        {step.description}
+                      </p>
                     </div>
 
-                    {/* Arrow Connector to Next */}
+                    {/* Down Arrow Connector (except last) */}
                     {index < steps.length - 1 && (
-                      <div className="absolute -right-16 top-1/2 -translate-y-1/2 z-10">
+                      <div className="flex justify-center">
                         <svg
-                          width="80"
-                          height="24"
-                          viewBox="0 0 80 24"
+                          width="40"
+                          height="60"
+                          viewBox="0 0 40 60"
                           fill="none"
-                          className="text-primary/40 group-hover:text-primary/60 transition-colors"
+                          className="text-primary/30"
                         >
+                          {/* Vertical line */}
                           <path
-                            d="M0 12 L65 12"
+                            d="M20 0 L20 50"
                             stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
                           />
+                          {/* Arrowhead */}
                           <path
-                            d="M55 6 L70 12 L55 18"
+                            d="M12 40 L20 55 L28 40"
                             stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
@@ -109,151 +239,8 @@ export default function ServiceProcess({
                       </div>
                     )}
                   </div>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-
-          {/* Tablet: 2-Column Grid with Arrows */}
-          <div className="hidden md:block lg:hidden">
-            <div className="grid grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
-              {steps.map((step, index) => (
-                <div
-                  key={step.step}
-                  className="relative group flex items-center"
-                >
-                  {/* Arrow from previous (even items) */}
-                  {index > 0 && index % 2 === 0 && (
-                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
-                      <svg
-                        width="60"
-                        height="24"
-                        viewBox="0 0 60 24"
-                        fill="none"
-                        className="text-primary/30"
-                      >
-                        <path
-                          d="M0 12 L50 12"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M40 6 L54 12 L40 18"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          fill="none"
-                        />
-                      </svg>
-                    </div>
-                  )}
-
-                  {/* Card */}
-                  <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
-                    {/* Step Badge */}
-                    <div className="absolute -top-2 -left-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold shadow-lg">
-                      {step.step}
-                    </div>
-
-                    {/* Content */}
-                    <div className="pt-3">
-                      <h3 className="text-base font-semibold mb-2 leading-tight">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Arrow to next (odd items) */}
-                  {index < steps.length - 1 && index % 2 === 1 && (
-                    <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
-                      <svg
-                        width="60"
-                        height="24"
-                        viewBox="0 0 60 24"
-                        fill="none"
-                        className="text-primary/30"
-                      >
-                        <path
-                          d="M0 12 L50 12"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M40 6 L54 12 L40 18"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          fill="none"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile: Vertical Cards with Arrow Connectors */}
-          <div className="md:hidden">
-            <div className="max-w-md mx-auto space-y-6">
-              {steps.map((step, index) => (
-                <div key={step.step} className="relative">
-                  {/* Card */}
-                  <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all shadow-lg">
-                    {/* Step Number */}
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-md">
-                        {step.step}
-                      </div>
-                      <h3 className="text-lg font-semibold">
-                        {step.title}
-                      </h3>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-sm text-muted-foreground leading-relaxed pl-11">
-                      {step.description}
-                    </p>
-                  </div>
-
-                  {/* Down Arrow Connector (except last) */}
-                  {index < steps.length - 1 && (
-                    <div className="flex justify-center">
-                      <svg
-                        width="40"
-                        height="60"
-                        viewBox="0 0 40 60"
-                        fill="none"
-                        className="text-primary/30"
-                      >
-                        {/* Vertical line */}
-                        <path
-                          d="M20 0 L20 50"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        {/* Arrowhead */}
-                        <path
-                          d="M12 40 L20 55 L28 40"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          fill="none"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
