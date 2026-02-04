@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Search,
   Settings,
@@ -37,6 +37,30 @@ export default function ServiceProcess({
   steps,
   title = "Süreç"
 }: ServiceProcessProps) {
+  // Track which step is currently being processed
+  const [processingStep, setProcessingStep] = useState<number | null>(null)
+
+  useEffect(() => {
+    // Start processing animation after component mounts
+    let currentStep = 0
+
+    const processNextStep = () => {
+      if (currentStep < steps.length) {
+        setProcessingStep(currentStep)
+        currentStep++
+        // Move to next step after 3 seconds
+        setTimeout(processNextStep, 3000)
+      } else {
+        // All steps processed, reset to show all as completed
+        setProcessingStep(null)
+      }
+    }
+
+    const timer = setTimeout(processNextStep, 500) // Start after 500ms
+
+    return () => clearTimeout(timer)
+  }, [steps.length])
+
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-4">
@@ -53,19 +77,68 @@ export default function ServiceProcess({
             <div className="flex items-center justify-center gap-8 flex-wrap">
               {steps.map((step, index) => {
                 const IconComponent = step.icon || defaultIcons[step.step] || Search
+                const isProcessing = processingStep === index
+                const isPastStep = processingStep !== null && index < processingStep
 
                 return (
                   <React.Fragment key={step.step}>
                     <div className="relative flex items-center">
                       {/* Card */}
-                      <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-64 shadow-lg hover:shadow-xl">
+                      <div
+                        className={`
+                          relative rounded-xl border transition-all duration-300 w-64 shadow-lg hover:shadow-xl
+                          min-h-[180px]
+                          ${isProcessing
+                            ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                            : isPastStep
+                            ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                            : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                          }
+                        `}
+                        style={
+                          isProcessing
+                            ? {
+                                backgroundSize: '400% 400%',
+                                backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                              }
+                            : undefined
+                        }
+                      >
                         {/* Icon */}
-                        <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-foreground flex items-center justify-center text-background shadow-lg">
+                        <div className={`
+                          absolute top-3 right-3 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all
+                          ${isProcessing
+                            ? 'bg-amber-500 text-white animate-pulse'
+                            : isPastStep
+                            ? 'bg-green-500 text-white'
+                            : 'bg-foreground text-background'
+                          }
+                        `}>
                           <IconComponent className="w-5 h-5" />
                         </div>
 
+                        {/* Processing Indicator */}
+                        {isProcessing && (
+                          <div className="absolute top-3 left-3">
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
+                              <div className="w-2 h-2 bg-white rounded-full animate-ping" />
+                              İşleniyor
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Completed Check */}
+                        {isPastStep && (
+                          <div className="absolute top-3 left-3">
+                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500 text-white text-xs font-medium rounded-full">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              Tamamlandı
+                            </div>
+                          </div>
+                        )}
+
                         {/* Content */}
-                        <div className="pr-14">
+                        <div className="pt-10 pr-14">
                           <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
                             {step.title}
                           </h3>
@@ -83,7 +156,7 @@ export default function ServiceProcess({
                             height="24"
                             viewBox="0 0 60 24"
                             fill="none"
-                            className="text-primary/40"
+                            className={isPastStep ? "text-green-400" : "text-primary/40"}
                           >
                             <path
                               d="M0 12 L50 12"
@@ -114,6 +187,8 @@ export default function ServiceProcess({
             <div className="grid grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
               {steps.map((step, index) => {
                 const IconComponent = step.icon || defaultIcons[step.step] || Search
+                const isProcessing = processingStep === index
+                const isPastStep = processingStep !== null && index < processingStep
 
                 return (
                   <div key={step.step} className="relative flex items-center">
@@ -125,7 +200,7 @@ export default function ServiceProcess({
                           height="24"
                           viewBox="0 0 60 24"
                           fill="none"
-                          className="text-primary/30"
+                          className={isPastStep ? "text-green-400" : "text-primary/30"}
                         >
                           <path
                             d="M0 12 L50 12"
@@ -146,14 +221,61 @@ export default function ServiceProcess({
                     )}
 
                     {/* Card */}
-                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
+                    <div
+                      className={`
+                        relative rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl flex-grow
+                        min-h-[200px]
+                        ${isProcessing
+                          ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                          : isPastStep
+                          ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                          : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                        }
+                      `}
+                      style={
+                        isProcessing
+                          ? {
+                              backgroundSize: '400% 400%',
+                              backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                            }
+                          : undefined
+                      }
+                    >
                       {/* Icon */}
-                      <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-foreground flex items-center justify-center text-background shadow-md">
+                      <div className={`
+                        absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all
+                        ${isProcessing
+                          ? 'bg-amber-500 text-white animate-pulse'
+                          : isPastStep
+                          ? 'bg-green-500 text-white'
+                          : 'bg-foreground text-background'
+                        }
+                      `}>
                         <IconComponent className="w-4 h-4" />
                       </div>
 
+                      {/* Processing Indicator */}
+                      {isProcessing && (
+                        <div className="absolute top-3 left-3">
+                          <div className="flex items-center gap-2 px-2.5 py-1 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
+                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
+                            İşleniyor
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Completed Check */}
+                      {isPastStep && (
+                        <div className="absolute top-3 left-3">
+                          <div className="flex items-center gap-1 px-2.5 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
+                            <CheckCircle2 className="w-3 h-3" />
+                            Tamamlandı
+                          </div>
+                        </div>
+                      )}
+
                       {/* Content */}
-                      <div className="pr-12">
+                      <div className="pr-12 pt-10">
                         <h3 className="text-base font-semibold mb-2 leading-tight">
                           {step.title}
                         </h3>
@@ -171,7 +293,7 @@ export default function ServiceProcess({
                           height="24"
                           viewBox="0 0 60 24"
                           fill="none"
-                          className="text-primary/30"
+                          className={isPastStep ? "text-green-400" : "text-primary/30"}
                         >
                           <path
                             d="M0 12 L50 12"
@@ -201,17 +323,61 @@ export default function ServiceProcess({
             <div className="max-w-md mx-auto space-y-6">
               {steps.map((step, index) => {
                 const IconComponent = step.icon || defaultIcons[step.step] || Search
+                const isProcessing = processingStep === index
+                const isPastStep = processingStep !== null && index < processingStep
 
                 return (
                   <div key={step.step} className="relative">
                     {/* Card */}
-                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all shadow-lg">
+                    <div
+                      className={`
+                        relative rounded-xl border transition-all shadow-lg
+                        min-h-[160px]
+                        ${isProcessing
+                          ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                          : isPastStep
+                          ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                          : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                        }
+                      `}
+                      style={
+                        isProcessing
+                          ? {
+                              backgroundSize: '400% 400%',
+                              backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                            }
+                          : undefined
+                      }
+                    >
                       {/* Header with Title and Icon */}
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-lg font-semibold pr-3">
-                          {step.title}
-                        </h3>
-                        <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center text-background shadow-md flex-shrink-0">
+                        <div className="flex items-center gap-2">
+                          {/* Status Badge */}
+                          {isProcessing && (
+                            <div className="flex items-center gap-1.5 px-2 py-0.5 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
+                              <div className="w-1 h-1 bg-white rounded-full animate-ping" />
+                              İşleniyor
+                            </div>
+                          )}
+                          {isPastStep && (
+                            <div className="flex items-center gap-1 px-2 py-0.5 bg-green-500 text-white text-xs font-medium rounded-full">
+                              <CheckCircle2 className="w-3 h-3" />
+                              Tamam
+                            </div>
+                          )}
+                          <h3 className="text-lg font-semibold">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <div className={`
+                          w-10 h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0 transition-all
+                          ${isProcessing
+                            ? 'bg-amber-500 text-white animate-pulse'
+                            : isPastStep
+                            ? 'bg-green-500 text-white'
+                            : 'bg-foreground text-background'
+                          }
+                        `}>
                           <IconComponent className="w-5 h-5" />
                         </div>
                       </div>
@@ -230,7 +396,7 @@ export default function ServiceProcess({
                           height="60"
                           viewBox="0 0 40 60"
                           fill="none"
-                          className="text-primary/30"
+                          className={isPastStep ? "text-green-400" : "text-primary/30"}
                         >
                           {/* Vertical line */}
                           <path
@@ -265,19 +431,24 @@ export default function ServiceProcess({
               {steps.map((_, i) => (
                 <div
                   key={i}
-                  className={`w-2 h-2 rounded-full ${
-                    i === 0
+                  className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                    processingStep === null
                       ? 'bg-primary'
-                      : i === 1
-                      ? 'bg-primary/70'
-                      : i === 2
-                      ? 'bg-primary/50'
+                      : i < processingStep!
+                      ? 'bg-green-500'
+                      : i === processingStep
+                      ? 'bg-amber-500 animate-pulse'
                       : 'bg-primary/30'
                   }`}
                 />
               ))}
             </div>
-            <span className="font-medium text-sm">{steps.length} Adımlık Süreç</span>
+            <span className="font-medium text-sm">
+              {processingStep === null
+                ? 'Süreç Tamamlandı'
+                : `Adım ${processingStep + 1} İşleniyor...`
+              }
+            </span>
           </div>
         </div>
       </div>
