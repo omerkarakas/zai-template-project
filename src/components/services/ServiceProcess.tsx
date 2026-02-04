@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   Search,
   Settings,
@@ -39,8 +39,15 @@ export default function ServiceProcess({
 }: ServiceProcessProps) {
   // Track which step is currently being processed
   const [processingStep, setProcessingStep] = useState<number | null>(null)
+  const [loopCount, setLoopCount] = useState(0)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
     // Start processing animation after component mounts
     let currentStep = 0
 
@@ -49,17 +56,27 @@ export default function ServiceProcess({
         setProcessingStep(currentStep)
         currentStep++
         // Move to next step after 3 seconds
-        setTimeout(processNextStep, 3000)
+        timeoutRef.current = setTimeout(processNextStep, 3000)
       } else {
-        // All steps processed, reset to show all as completed
+        // All steps processed, restart animation after 2 seconds
         setProcessingStep(null)
+        timeoutRef.current = setTimeout(() => {
+          setLoopCount(prev => prev + 1)
+          currentStep = 0
+          processNextStep()
+        }, 2000)
       }
     }
 
-    const timer = setTimeout(processNextStep, 500) // Start after 500ms
+    // Start after a short delay
+    timeoutRef.current = setTimeout(processNextStep, 500)
 
-    return () => clearTimeout(timer)
-  }, [steps.length])
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [steps.length, loopCount])
 
   return (
     <section className="py-16 lg:py-24">
@@ -81,7 +98,7 @@ export default function ServiceProcess({
                 const isPastStep = processingStep !== null && index < processingStep
 
                 return (
-                  <React.Fragment key={step.step}>
+                  <React.Fragment key={`${step.step}-${loopCount}`}>
                     <div className="relative flex items-center">
                       {/* Card */}
                       <div
@@ -117,28 +134,8 @@ export default function ServiceProcess({
                           <IconComponent className="w-5 h-5" />
                         </div>
 
-                        {/* Processing Indicator */}
-                        {isProcessing && (
-                          <div className="absolute top-3 left-3">
-                            <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
-                              <div className="w-2 h-2 bg-white rounded-full animate-ping" />
-                              İşleniyor
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Completed Check */}
-                        {isPastStep && (
-                          <div className="absolute top-3 left-3">
-                            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500 text-white text-xs font-medium rounded-full">
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                              Tamamlandı
-                            </div>
-                          </div>
-                        )}
-
                         {/* Content */}
-                        <div className="pt-10 pr-14">
+                        <div className="pt-14 pr-14 pb-6 pl-6">
                           <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
                             {step.title}
                           </h3>
@@ -191,7 +188,7 @@ export default function ServiceProcess({
                 const isPastStep = processingStep !== null && index < processingStep
 
                 return (
-                  <div key={step.step} className="relative flex items-center">
+                  <div key={`${step.step}-${loopCount}`} className="relative flex items-center">
                     {/* Arrow from previous (even items to left) */}
                     {index % 2 === 0 && index > 0 && (
                       <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
@@ -254,28 +251,8 @@ export default function ServiceProcess({
                         <IconComponent className="w-4 h-4" />
                       </div>
 
-                      {/* Processing Indicator */}
-                      {isProcessing && (
-                        <div className="absolute top-3 left-3">
-                          <div className="flex items-center gap-2 px-2.5 py-1 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
-                            İşleniyor
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Completed Check */}
-                      {isPastStep && (
-                        <div className="absolute top-3 left-3">
-                          <div className="flex items-center gap-1 px-2.5 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
-                            <CheckCircle2 className="w-3 h-3" />
-                            Tamamlandı
-                          </div>
-                        </div>
-                      )}
-
                       {/* Content */}
-                      <div className="pr-12 pt-10">
+                      <div className="pr-12 pt-12 pb-6 pl-6">
                         <h3 className="text-base font-semibold mb-2 leading-tight">
                           {step.title}
                         </h3>
@@ -327,7 +304,7 @@ export default function ServiceProcess({
                 const isPastStep = processingStep !== null && index < processingStep
 
                 return (
-                  <div key={step.step} className="relative">
+                  <div key={`${step.step}-${loopCount}`} className="relative">
                     {/* Card */}
                     <div
                       className={`
@@ -350,25 +327,10 @@ export default function ServiceProcess({
                       }
                     >
                       {/* Header with Title and Icon */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          {/* Status Badge */}
-                          {isProcessing && (
-                            <div className="flex items-center gap-1.5 px-2 py-0.5 bg-amber-500 text-white text-xs font-medium rounded-full animate-pulse">
-                              <div className="w-1 h-1 bg-white rounded-full animate-ping" />
-                              İşleniyor
-                            </div>
-                          )}
-                          {isPastStep && (
-                            <div className="flex items-center gap-1 px-2 py-0.5 bg-green-500 text-white text-xs font-medium rounded-full">
-                              <CheckCircle2 className="w-3 h-3" />
-                              Tamam
-                            </div>
-                          )}
-                          <h3 className="text-lg font-semibold">
-                            {step.title}
-                          </h3>
-                        </div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-semibold pr-3">
+                          {step.title}
+                        </h3>
                         <div className={`
                           w-10 h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0 transition-all
                           ${isProcessing
@@ -383,7 +345,7 @@ export default function ServiceProcess({
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed px-4 pb-4">
                         {step.description}
                       </p>
                     </div>
@@ -430,7 +392,7 @@ export default function ServiceProcess({
             <div className="flex items-center gap-1">
               {steps.map((_, i) => (
                 <div
-                  key={i}
+                  key={`${i}-${loopCount}`}
                   className={`w-2 h-2 rounded-full transition-all duration-500 ${
                     processingStep === null
                       ? 'bg-primary'
