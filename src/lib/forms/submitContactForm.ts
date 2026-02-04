@@ -24,12 +24,12 @@ export interface SubmissionMetadata {
  */
 interface WebhookPayload {
   // Form fields
-  isim: string
-  telefon: string
+  name: string
+  phone: string
   email: string
-  sirket: string
+  company: string
   website?: string
-  mesaj?: string
+  message?: string
   gizlilik: true
   service?: string
   // Metadata for lead tracking
@@ -87,14 +87,29 @@ export async function submitContactForm(
     }
   }
 
+  // Normalize phone number to 905XX format
+  let normalizedPhone = data.phone.replace(/\D/g, '') // Remove all non-digits
+  if (normalizedPhone.startsWith('90')) {
+    // Already has 90 prefix, keep it
+  } else if (normalizedPhone.startsWith('9')) {
+    // Starts with 9 but not 90, add 0
+    normalizedPhone = '9' + normalizedPhone
+  } else if (normalizedPhone.startsWith('0')) {
+    // Starts with 0, replace with 90
+    normalizedPhone = '90' + normalizedPhone.slice(1)
+  } else {
+    // No prefix, add 90
+    normalizedPhone = '90' + normalizedPhone
+  }
+
   // Prepare payload with form data and metadata
   const payload: WebhookPayload = {
-    isim: data.isim,
-    telefon: data.telefon,
+    name: data.name,
+    phone: normalizedPhone,
     email: data.email,
-    sirket: data.sirket,
+    company: data.company,
     website: data.website || undefined,
-    mesaj: data.mesaj || undefined,
+    message: data.message || undefined,
     gizlilik: data.gizlilik,
     service: data.service || undefined,
     metadata: {

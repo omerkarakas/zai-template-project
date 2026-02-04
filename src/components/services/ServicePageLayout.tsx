@@ -18,9 +18,11 @@ export default function ServicePageLayout({
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/50">
       {/* Hero Section */}
-      <div className="relative py-16 lg:py-24">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5" />
-        <div className="relative container mx-auto px-4 text-center">
+      <div className="relative py-16 lg:py-24 overflow-hidden service-hero-bg">
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 z-0 bg-background/70" />
+
+        <div className="relative container mx-auto px-4 text-center z-10">
           {/* Icon */}
           {icon && (
             <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-xl gradient-bg text-primary-foreground">

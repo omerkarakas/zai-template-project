@@ -35,12 +35,12 @@ export function ContactForm({
     resolver: zodResolver(contactSchema),
     mode: "onBlur", // Show errors when user leaves field for better UX
     defaultValues: {
-      isim: "",
-      telefon: "",
+      name: "",
+      phone: "",
       email: "",
-      sirket: "",
+      company: "",
       website: "",
-      mesaj: "",
+      message: "",
       gizlilik: false as unknown as true, // Workaround: checkbox will be true when checked
       service: serviceName || "",
     },
@@ -79,7 +79,7 @@ export function ContactForm({
   const isDisabled = isSubmitting || internalSuccess
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
       {/* Hidden service field for lead tracking */}
       <input type="hidden" {...register("service")} />
 
@@ -105,44 +105,44 @@ export function ContactForm({
       <div className="grid gap-4 md:grid-cols-2">
         {/* İsim (required) */}
         <div className="space-y-2">
-          <Label htmlFor="isim">
+          <Label htmlFor="name">
             İsim <span className="text-destructive">*</span>
           </Label>
           <Input
-            id="isim"
-            {...register("isim")}
+            id="name"
+            {...register("name")}
             type="text"
             placeholder="Adınız Soyadınız"
             disabled={isDisabled}
-            className={cn(errors.isim && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={!!errors.isim}
+            className={cn(errors.name && "border-destructive focus-visible:ring-destructive")}
+            aria-invalid={!!errors.name}
           />
-          {errors.isim && (
+          {errors.name && (
             <p className="text-sm text-destructive flex items-center gap-1">
               <AlertCircle className="h-3 w-3" />
-              {errors.isim.message}
+              {errors.name.message}
             </p>
           )}
         </div>
 
         {/* Telefon (required) */}
         <div className="space-y-2">
-          <Label htmlFor="telefon">
+          <Label htmlFor="phone">
             Telefon <span className="text-destructive">*</span>
           </Label>
           <Input
-            id="telefon"
-            {...register("telefon")}
+            id="phone"
+            {...register("phone")}
             type="tel"
             placeholder="05XX XXX XX XX"
             disabled={isDisabled}
-            className={cn(errors.telefon && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={!!errors.telefon}
+            className={cn(errors.phone && "border-destructive focus-visible:ring-destructive")}
+            aria-invalid={!!errors.phone}
           />
-          {errors.telefon && (
+          {errors.phone && (
             <p className="text-sm text-destructive flex items-center gap-1">
               <AlertCircle className="h-3 w-3" />
-              {errors.telefon.message}
+              {errors.phone.message}
             </p>
           )}
         </div>
@@ -171,22 +171,22 @@ export function ContactForm({
 
         {/* Şirket Adı (required) */}
         <div className="space-y-2">
-          <Label htmlFor="sirket">
+          <Label htmlFor="company">
             Şirket Adı <span className="text-destructive">*</span>
           </Label>
           <Input
-            id="sirket"
-            {...register("sirket")}
+            id="company"
+            {...register("company")}
             type="text"
             placeholder="Şirketinizin adı"
             disabled={isDisabled}
-            className={cn(errors.sirket && "border-destructive focus-visible:ring-destructive")}
-            aria-invalid={!!errors.sirket}
+            className={cn(errors.company && "border-destructive focus-visible:ring-destructive")}
+            aria-invalid={!!errors.company}
           />
-          {errors.sirket && (
+          {errors.company && (
             <p className="text-sm text-destructive flex items-center gap-1">
               <AlertCircle className="h-3 w-3" />
-              {errors.sirket.message}
+              {errors.company.message}
             </p>
           )}
         </div>
@@ -213,22 +213,22 @@ export function ContactForm({
 
         {/* Mesaj (optional) - full width on mobile, takes second column on desktop */}
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="mesaj">Mesaj</Label>
+          <Label htmlFor="message">Mesaj</Label>
           <Textarea
-            id="mesaj"
-            {...register("mesaj")}
+            id="message"
+            {...register("message")}
             placeholder="Size nasıl yardımcı olabiliriz?"
             className={cn(
-              "min-h-[120px]",
-              errors.mesaj && "border-destructive focus-visible:ring-destructive"
+              "min-h-[80px] sm:min-h-[120px]",
+              errors.message && "border-destructive focus-visible:ring-destructive"
             )}
             disabled={isDisabled}
-            aria-invalid={!!errors.mesaj}
+            aria-invalid={!!errors.message}
           />
-          {errors.mesaj && (
+          {errors.message && (
             <p className="text-sm text-destructive flex items-center gap-1">
               <AlertCircle className="h-3 w-3" />
-              {errors.mesaj.message}
+              {errors.message.message}
             </p>
           )}
         </div>

@@ -14,17 +14,17 @@ const turkishPhoneRegex = /^(\+90|0)?[0-9]{10}$/
  * Uses Zod for runtime type validation and TypeScript inference
  */
 export const contactSchema = z.object({
-  isim: z.string()
+  name: z.string()
     .min(2, 'İsim en az 2 karakter olmalıdır')
     .max(50, 'İsim en fazla 50 karakter olabilir'),
 
-  telefon: z.string()
+  phone: z.string()
     .regex(turkishPhoneRegex, 'Geçerli bir Türk telefon numarası giriniz'),
 
   email: z.string()
     .email('Geçerli bir e-posta adresi giriniz'),
 
-  sirket: z.string()
+  company: z.string()
     .min(2, 'Şirket adı en az 2 karakter olmalıdır')
     .max(100, 'Şirket adı en fazla 100 karakter olabilir'),
 
@@ -33,7 +33,7 @@ export const contactSchema = z.object({
     .optional()
     .or(z.literal('')),
 
-  mesaj: z.string()
+  message: z.string()
     .max(500, 'Mesaj en fazla 500 karakter olabilir')
     .optional(),
 
