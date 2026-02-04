@@ -94,7 +94,12 @@ Plans:
   2. Statik export build'i cPanel/Plesk PHP hostinge upload edilebilir ve çalışır
   3. Tüm formlar production ortamında n8n'a başarıyla veri gönderir
   4. Tüm sayfalar farklı tarayıcılarda (Chrome, Firefox, Safari) hatasız açılır
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Production Configuration & Deployment Documentation (.env.production.example, DEPLOYMENT.md, build verification)
+- [ ] 05-02-PLAN.md — Responsive & Cross-Browser Testing (viewport meta tag, TESTING.md, responsive verification)
+- [ ] 05-03-PLAN.md — Production Deployment & Verification (deploy to hosting, form testing, n8n integration)
 
 ### Phase 6: PMK Lead Scoring Demo
 **Goal**: Potansiyel Müşteri Kazanımı sayfasında interaktif lead scoring demo çalışır
@@ -117,5 +122,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Sayfa Yapısı & İçerik | 5/5 | Complete | 2026-02-03 |
 | 3. Form Entegrasyonu & n8n Webhook | 3/3 | Complete | 2026-02-03 |
 | 4. SEO & Performans Optimizasyonu | 2/2 | Complete | 2026-02-04 |
-| 5. Test & Deploy | 0/TBD | Not started | - |
+| 5. Test & Deploy | 0/3 | Not started | - |
 | 6. PMK Lead Scoring Demo | 0/TBD | Not started | - |
