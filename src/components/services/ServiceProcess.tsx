@@ -55,16 +55,16 @@ export default function ServiceProcess({
       if (currentStep < steps.length) {
         setProcessingStep(currentStep)
         currentStep++
-        // Move to next step after 3 seconds
-        timeoutRef.current = setTimeout(processNextStep, 3000)
+        // Move to next step after 5 seconds
+        timeoutRef.current = setTimeout(processNextStep, 5000)
       } else {
-        // All steps processed, restart animation after 2 seconds
+        // All steps processed, restart animation after 5 seconds
         setProcessingStep(null)
         timeoutRef.current = setTimeout(() => {
           setLoopCount(prev => prev + 1)
           currentStep = 0
           processNextStep()
-        }, 2000)
+        }, 5000)
       }
     }
 
