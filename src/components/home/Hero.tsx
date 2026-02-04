@@ -10,9 +10,32 @@ interface HeroProps {
 
 export default function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative bg-background py-20 md:py-32">
-      {/* Optional: Subtle gradient background */}
-      <div className="absolute inset-0 -z-10 gradient-bg opacity-5" />
+    <section className="relative bg-background py-20 md:py-32 overflow-hidden">
+      {/* Background pattern with theme-specific colors */}
+      <div className="absolute inset-0 -z-10">
+        {/* Light theme background */}
+        <div className="dark:hidden absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" />
+        {/* Grid pattern overlay */}
+        <div className="dark:hidden absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+
+        {/* Dark theme background */}
+        <div className="hidden dark:block absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900" />
+        {/* Dark grid pattern */}
+        <div className="hidden dark:block absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `linear-gradient(to right, #4c1d95 1px, transparent 1px), linear-gradient(to bottom, #4c1d95 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+        {/* Dark glow effect */}
+        <div className="hidden dark:block absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="hidden dark:block absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      </div>
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">

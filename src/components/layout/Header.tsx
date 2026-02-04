@@ -18,7 +18,7 @@ export default function Header() {
 
   // Services for dropdown
   const services = [
-    { name: 'Google İşletme Optimizasyonu', href: '/hizmetler/google-isletme-optimizasyonu' },
+    { name: 'Google İşletme Optimizasyonu', href: '/hizmetler/google-isletme' },
     { name: 'Yerel SEO & Global SEO', href: '/hizmetler/seo' },
     { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
     { name: 'Web Sitesi Geliştirme', href: '/hizmetler/web-gelistirme' },
