@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { ChevronRight, Circle } from 'lucide-react'
 
 interface ProcessStep {
   step: number
@@ -29,15 +28,43 @@ export default function ServiceProcess({
 
         {/* Process Flow - Horizontal Cards */}
         <div className="relative">
-          {/* Desktop: Horizontal Flow */}
+          {/* Desktop: Horizontal Flow with Arrow Connectors */}
           <div className="hidden lg:block">
-            <div className="flex items-center justify-center gap-4 flex-wrap">
+            <div className="flex items-center justify-center gap-8 flex-wrap">
               {steps.map((step, index) => (
                 <React.Fragment key={step.step}>
-                  {/* Process Card */}
-                  <div className="relative group">
-                    {/* Card with Arrow Shape */}
-                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-56 shadow-lg hover:shadow-xl">
+                  {/* Process Card with Arrow Shape */}
+                  <div className="relative group flex items-center">
+                    {/* Arrow Connector from Previous */}
+                    {index > 0 && (
+                      <div className="absolute -left-10 top-1/2 -translate-y-1/2 z-10">
+                        <svg
+                          width="60"
+                          height="24"
+                          viewBox="0 0 60 24"
+                          fill="none"
+                          className="text-primary/30"
+                        >
+                          <path
+                            d="M0 12 L50 12"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M40 6 L54 12 L40 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                          />
+                        </svg>
+                      </div>
+                    )}
+
+                    {/* Card */}
+                    <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-8 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-72 shadow-lg hover:shadow-xl">
                       {/* Step Indicator */}
                       <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-lg">
                         {step.step}
@@ -45,46 +72,86 @@ export default function ServiceProcess({
 
                       {/* Content */}
                       <div className="pt-2">
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">
+                        <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
                           {step.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           {step.description}
                         </p>
                       </div>
-
-                      {/* Status Dot */}
-                      <div className="absolute bottom-3 right-3 flex items-center gap-1.5">
-                        <Circle className="w-2 h-2 fill-primary text-primary" />
-                        <span className="text-xs text-muted-foreground">Adım</span>
-                      </div>
                     </div>
 
-                    {/* Connecting Chevron (except last) */}
+                    {/* Arrow Connector to Next */}
                     {index < steps.length - 1 && (
-                      <div className="absolute -right-6 top-1/2 -translate-y-1/2 z-10">
-                        <ChevronRight className="w-8 h-8 text-primary/40 group-hover:text-primary transition-colors" />
+                      <div className="absolute -right-16 top-1/2 -translate-y-1/2 z-10">
+                        <svg
+                          width="80"
+                          height="24"
+                          viewBox="0 0 80 24"
+                          fill="none"
+                          className="text-primary/40 group-hover:text-primary/60 transition-colors"
+                        >
+                          <path
+                            d="M0 12 L65 12"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M55 6 L70 12 L55 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                          />
+                        </svg>
                       </div>
                     )}
                   </div>
                 </React.Fragment>
               ))}
             </div>
-
-            {/* Flow Line Background */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -translate-y-1/2 -z-10" />
           </div>
 
-          {/* Tablet: 2-Column Grid */}
+          {/* Tablet: 2-Column Grid with Arrows */}
           <div className="hidden md:block lg:hidden">
-            <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
               {steps.map((step, index) => (
                 <div
                   key={step.step}
-                  className="relative group"
+                  className="relative group flex items-center"
                 >
+                  {/* Arrow from previous (even items) */}
+                  {index > 0 && index % 2 === 0 && (
+                    <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
+                      <svg
+                        width="60"
+                        height="24"
+                        viewBox="0 0 60 24"
+                        fill="none"
+                        className="text-primary/30"
+                      >
+                        <path
+                          d="M0 12 L50 12"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M40 6 L54 12 L40 18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      </svg>
+                    </div>
+                  )}
+
                   {/* Card */}
-                  <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
                     {/* Step Badge */}
                     <div className="absolute -top-2 -left-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold shadow-lg">
                       {step.step}
@@ -92,7 +159,7 @@ export default function ServiceProcess({
 
                     {/* Content */}
                     <div className="pt-3">
-                      <h3 className="text-base font-semibold mb-2">
+                      <h3 className="text-base font-semibold mb-2 leading-tight">
                         {step.title}
                       </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -101,10 +168,31 @@ export default function ServiceProcess({
                     </div>
                   </div>
 
-                  {/* Arrow to next (odd items only) */}
-                  {index < steps.length - 1 && index % 2 === 0 && (
-                    <div className="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2">
-                      <ChevronRight className="w-10 h-10 text-primary/30" />
+                  {/* Arrow to next (odd items) */}
+                  {index < steps.length - 1 && index % 2 === 1 && (
+                    <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
+                      <svg
+                        width="60"
+                        height="24"
+                        viewBox="0 0 60 24"
+                        fill="none"
+                        className="text-primary/30"
+                      >
+                        <path
+                          d="M0 12 L50 12"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M40 6 L54 12 L40 18"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      </svg>
                     </div>
                   )}
                 </div>
@@ -112,9 +200,9 @@ export default function ServiceProcess({
             </div>
           </div>
 
-          {/* Mobile: Vertical Cards with Flow */}
+          {/* Mobile: Vertical Cards with Arrow Connectors */}
           <div className="md:hidden">
-            <div className="max-w-md mx-auto space-y-4">
+            <div className="max-w-md mx-auto space-y-6">
               {steps.map((step, index) => (
                 <div key={step.step} className="relative">
                   {/* Card */}
@@ -135,14 +223,33 @@ export default function ServiceProcess({
                     </p>
                   </div>
 
-                  {/* Down Arrow (except last) */}
+                  {/* Down Arrow Connector (except last) */}
                   {index < steps.length - 1 && (
-                    <div className="flex justify-center py-2">
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-6 bg-gradient-to-b from-primary/50 to-transparent" />
-                        <ChevronRight className="w-6 h-6 text-primary/40 rotate-90" />
-                        <div className="w-0.5 h-6 bg-gradient-to-t from-primary/50 to-transparent" />
-                      </div>
+                    <div className="flex justify-center">
+                      <svg
+                        width="40"
+                        height="60"
+                        viewBox="0 0 40 60"
+                        fill="none"
+                        className="text-primary/30"
+                      >
+                        {/* Vertical line */}
+                        <path
+                          d="M20 0 L20 50"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        {/* Arrowhead */}
+                        <path
+                          d="M12 40 L20 55 L28 40"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          fill="none"
+                        />
+                      </svg>
                     </div>
                   )}
                 </div>
