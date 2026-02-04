@@ -10,20 +10,8 @@ interface HeroProps {
 
 export default function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
-      {/* Light theme background */}
-      <div className="dark:hidden absolute inset-0 -z-10">
-        <div className="absolute inset-0 hero-bg-light" />
-        <div className="absolute inset-0 hero-bg-light-grid" />
-      </div>
-
-      {/* Dark theme background */}
-      <div className="hidden dark:block absolute inset-0 -z-10">
-        <div className="absolute inset-0 hero-bg-dark" />
-        <div className="absolute inset-0 hero-bg-dark-grid" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
-      </div>
+    <section className="relative bg-background py-20 md:py-32">
+      <div className="absolute inset-0 -z-10 gradient-bg opacity-5" />
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">

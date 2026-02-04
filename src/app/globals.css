@@ -79,29 +79,4 @@
   .gradient-bg {
     background: linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-to)));
   }
-
-  /* Hero Backgrounds */
-  .hero-bg-light {
-    background: linear-gradient(to bottom right, #eff6ff, #eef2ff, #faf5ff);
-  }
-
-  .hero-bg-light-grid {
-    background-image:
-      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.3;
-  }
-
-  .hero-bg-dark {
-    background: linear-gradient(to bottom right, #0f172a, #1e1b4b, #0f172a);
-  }
-
-  .hero-bg-dark-grid {
-    background-image:
-      linear-gradient(to right, #6d28d9 1px, transparent 1px),
-      linear-gradient(to bottom, #6d28d9 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.15;
-  }
 }
