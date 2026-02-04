@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,10 +84,12 @@ export default function Header() {
                 )
               )
             )}
+            <ThemeSwitcher />
           </nav>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button and theme switcher */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeSwitcher />
             <Button
               variant="ghost"
               size="icon"
