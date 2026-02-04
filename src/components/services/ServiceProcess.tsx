@@ -60,7 +60,7 @@ export default function ServiceProcess({
                       {/* Card */}
                       <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-64 shadow-lg hover:shadow-xl">
                         {/* Icon */}
-                        <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-lg">
+                        <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-foreground flex items-center justify-center text-background shadow-lg">
                           <IconComponent className="w-5 h-5" />
                         </div>
 
@@ -117,10 +117,38 @@ export default function ServiceProcess({
 
                 return (
                   <div key={step.step} className="relative flex items-center">
+                    {/* Arrow from previous (even items to left) */}
+                    {index % 2 === 0 && index > 0 && (
+                      <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
+                        <svg
+                          width="60"
+                          height="24"
+                          viewBox="0 0 60 24"
+                          fill="none"
+                          className="text-primary/30"
+                        >
+                          <path
+                            d="M0 12 L50 12"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M40 6 L54 12 L40 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                          />
+                        </svg>
+                      </div>
+                    )}
+
                     {/* Card */}
                     <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
                       {/* Icon */}
-                      <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
+                      <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-foreground flex items-center justify-center text-background shadow-md">
                         <IconComponent className="w-4 h-4" />
                       </div>
 
@@ -135,8 +163,8 @@ export default function ServiceProcess({
                       </div>
                     </div>
 
-                    {/* Arrow to Next (odd items that have a next card) */}
-                    {index % 2 === 1 && index < steps.length - 1 && (
+                    {/* Arrow to Next (even items that have next in same row) */}
+                    {index % 2 === 0 && index < steps.length - 1 && (
                       <div className="absolute -right-12 top-1/2 -translate-y-1/2 z-10">
                         <svg
                           width="60"
@@ -183,7 +211,7 @@ export default function ServiceProcess({
                         <h3 className="text-lg font-semibold pr-3">
                           {step.title}
                         </h3>
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center text-background shadow-md flex-shrink-0">
                           <IconComponent className="w-5 h-5" />
                         </div>
                       </div>
