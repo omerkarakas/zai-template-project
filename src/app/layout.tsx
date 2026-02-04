@@ -37,7 +37,6 @@ export default function RootLayout({
     <html lang="tr" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
-          defaultTheme="system"
           storageKey="moka-theme"
         >
           <Header />
