@@ -1,9 +1,39 @@
-  🔄 Sonraki adım:
-  - /gsd:discuss-phase 1 — Phase 1 için planlama öncesi context   
-  toplama
-  - Veya /gsd:plan-phase 1 — Direkt planlamaya başlama
+I see the workflow needs to be activated in n8n UI first. The webhook URL is generated when   
+  you activate it.
+                                                                                                  Here's what you need to do:
+                                                                                                
+  1. Go to n8n: https://ai.mokadijital.com
+  2. Open the workflow: "Lead Registration - Moka Dijital"
+  3. Click "Active" toggle in the top right to activate it
+  4. Click on the Webhook node - it will show you the webhook URLs:
+    - Test URL: https://ai.mokadijital.com/webhook/xxxxxxxxx (for development)
+    - Production URL: https://ai.mokadijital.com/webhook-test/xxxxxxxxx (for production)        
+  5. Copy the Test URL and update .env.local:
+  NEXT_PUBLIC_N8N_WEBHOOK_URL=https://ai.mokadijital.com/webhook-test/YOUR-WEBHOOK-ID
 
-  Yeni bir session'da devam etmek için:
-  /gsd:progress
-  Bu komut projenin güncel durumunu gösterir ve bir sonraki adımda
-   yönlendirir.
+  The workflow I created has:
+  - ✅ CORS enabled (allowedOrigins: *)
+  - ✅ POST method configured
+  - ✅ Success response with Turkish message
+  - ✅ Captures: isim, telefon, email, sirket, service + metadata
+
+  Once you activate it in n8n and get the URL, let me know and I'll update the configuration    
+  file for you.
+
+
+
+  /gsd:execute-phase 3                                                                                                                                                                          
+  Bu komut:                                                                                       - Tamamlanan planları (01, 02) atlayacak                                                      
+  - 03-03 plan'ında checkpoint'ten devam edecek                                                 
+  - Phase 3'ün geri kalanını tamamlayacak
+
+  Veya direkt olarak devam agent'ini başlatmak için continuation ID:
+  Resume with: Task tool (resume parameter with agent ID: a74c976)
+
+  Şu an durum:
+  - ✅ Plan 03-01: ContactModal & Form UI (COMPLETE)
+  - ✅ Plan 03-02: Form Validation & n8n Webhook (COMPLETE)
+  - ⏸️ Plan 03-03: Integration (checkpoint'te bekliyor)
+
+  Geri döndüğünüzde /gsd:execute-phase 3 yazmanız yeterli, sistem kaldığınız yerden devam       
+  edecek.
