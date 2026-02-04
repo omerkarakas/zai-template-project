@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-02)
 
 ## Current Position
 
-Phase: 4 of 6 (complete)
-Plan: 2 of 2 complete
-Status: Phase 4 complete and verified - All SEO infrastructure in place, sitemap/robots.txt configured, page metadata complete
-Last activity: 2026-02-04 — Phase 4 verification passed, ready for Phase 5
+Phase: 5 of 6 (in progress)
+Plan: 1 of ~2-3 in current phase
+Status: In progress - Production configuration and deployment documentation complete
+Last activity: 2026-02-04 — Completed 05-01-PLAN.md (Production Configuration and Deployment Documentation)
 
-Progress: [█████████░] 67% (4 of 6 phases complete, 11 of ~12+ plans complete)
+Progress: [█████████░] 75% (4 of 6 phases complete, 12 of ~14 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
+- Total plans completed: 12
 - Average duration: 6 min
-- Total execution time: 1.1 hours
+- Total execution time: 1.2 hours
 
 **By Phase:**
 
@@ -31,9 +31,10 @@ Progress: [█████████░] 67% (4 of 6 phases complete, 11 of ~1
 | 02-page-structure-content | 5 | 5 | 6 min |
 | 03-form-entegrasyonu | 3 | 3 | 6 min |
 | 04-seo-&-performans-optimizasyonu | 2 | 2 | 7 min |
+| 05-test-&-deploy | 1 | 1 | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 8 min (04-02), 7 min (04-01), 5 min (03-03), 4 min (03-02), 4 min (03-01)
+- Last 5 plans: 3 min (05-01), 8 min (04-02), 7 min (04-01), 5 min (03-03), 4 min (03-02)
 - Trend: Efficient delivery, maintaining pace
 
 *Updated after each plan completion*
@@ -117,6 +118,12 @@ Recent decisions affecting current work:
 - Canonical URLs for SEO on all pages
 - Client/server component separation pattern established
 
+**From Phase 5 Plan 01:**
+- Created .env.production.example template with production environment variables and n8n webhook setup instructions
+- Created comprehensive DEPLOYMENT.md (361 lines) with pre-deploy checklist, three upload methods, verification steps, and troubleshooting
+- Verified static export build process: 1.7 MB output, 12 pages, ~30 second build time
+- Established deployment documentation pattern for PHP hosting (cPanel, FTP, FileZilla)
+
 **Phase 4 Verification (2026-02-04):**
 - All 4 must-haves verified: meta tags on all pages, sitemap.xml, robots.txt, SEO-friendly URLs
 - VERIFICATION.md created with 4/4 score, status: passed
@@ -156,14 +163,14 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-**Phase 4 Complete and Verified!** Ready for Phase 5: Test & Deploy.
-
-Core Web Vitals performance testing will be done in Phase 5 when site is deployed.
+**Phase 5 In Progress.** Production configuration and deployment documentation complete.
 
 **Before Production:**
-- Activate n8n webhook workflow in UI
-- Update .env.local with actual production webhook URL
-- Test form submission to verify webhook receives data
+- Activate n8n webhook workflow in UI (https://ai.mokadijital.com -> Workflows -> Lead Registration - Moka Dijital -> Active toggle)
+- Copy .env.production.example to .env.local and update NEXT_PUBLIC_N8N_WEBHOOK_URL with production URL
+- Run npm run build to generate production static export
+- Follow DEPLOYMENT.md for upload steps (cPanel File Manager, FTP, or FileZilla)
+- Test form submission after deployment to verify webhook receives data
 
 ### Blockers/Concerns
 
@@ -179,5 +186,5 @@ Core Web Vitals performance testing will be done in Phase 5 when site is deploye
 ## Session Continuity
 
 Last session: 2026-02-04
-Stopped at: Phase 4 COMPLETE - All SEO infrastructure in place, sitemap/robots.txt configured, page metadata complete
-Resume file: .planning/phases/04-seo-&-performans-optimizasyonu/04-seo-&-performans-optimizasyonu-VERIFICATION.md
+Stopped at: Completed 05-01-PLAN.md (Production Configuration and Deployment Documentation)
+Resume file: .planning/phases/05-test-&-deploy/05-01-SUMMARY.md
