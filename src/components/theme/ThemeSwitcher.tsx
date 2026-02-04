@@ -13,23 +13,28 @@ import {
 
 export function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
-  const getIcon = () => {
-    switch (theme) {
-      case 'light':
-        return <Sun className="h-4 w-4" />
-      case 'dark':
-        return <Moon className="h-4 w-4" />
-      default:
-        return <Monitor className="h-4 w-4" />
-    }
+  // useEffect only runs on the client, so now we can safely show the UI
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="icon" className="h-9 w-9">
+        <Monitor className="h-4 w-4" />
+        <span className="sr-only">Tema seç</span>
+      </Button>
+    )
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="h-9 w-9">
-          {getIcon()}
+          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Tema seç</span>
         </Button>
       </DropdownMenuTrigger>
