@@ -10,8 +10,23 @@ interface HeroProps {
 
 export default function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative bg-background py-20 md:py-32">
-      <div className="absolute inset-0 -z-10 gradient-bg opacity-5" />
+    <section className="relative py-20 md:py-32 overflow-hidden">
+      {/* Video background - same for all themes */}
+      <div className="absolute inset-0 -z-10">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Gradient overlay - light theme */}
+        <div className="dark:hidden absolute inset-0 bg-gradient-to-br from-blue-50/95 via-indigo-50/95 to-purple-50/95" />
+        {/* Gradient overlay - dark theme */}
+        <div className="hidden dark:block absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-950/95 to-slate-900/95" />
+      </div>
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">

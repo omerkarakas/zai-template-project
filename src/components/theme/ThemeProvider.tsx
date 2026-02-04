@@ -28,12 +28,22 @@ export function ThemeProvider({
   storageKey = 'moka-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(
-    () => (typeof window !== 'undefined' && (localStorage.getItem(storageKey) as Theme)) || defaultTheme
-  )
+  // Start with default theme to avoid hydration mismatch
+  const [theme, setThemeState] = React.useState<Theme>(defaultTheme)
+
+  // Read from localStorage after mount
+  React.useEffect(() => {
+    const stored = localStorage.getItem(storageKey) as Theme
+    if (stored) {
+      setThemeState(stored)
+    }
+  }, [storageKey])
 
   React.useEffect(() => {
     const root = window.document.documentElement
+
+    console.log('[ThemeProvider] useEffect running, theme:', theme)
+    console.log('[ThemeProvider] Root element classes before:', root.className)
 
     root.classList.remove('light', 'dark')
 
@@ -44,18 +54,23 @@ export function ThemeProvider({
         : 'light'
 
       root.classList.add(systemTheme)
+      console.log('[ThemeProvider] System theme applied, classes after:', root.className)
       return
     }
 
     root.classList.add(theme)
+    console.log('[ThemeProvider] Theme applied, classes after:', root.className)
   }, [theme])
+
+  const setTheme = React.useCallback((theme: Theme) => {
+    console.log('[ThemeProvider] setTheme called with:', theme)
+    localStorage.setItem(storageKey, theme)
+    setThemeState(theme)
+  }, [storageKey])
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
-    },
+    setTheme,
   }
 
   return (
