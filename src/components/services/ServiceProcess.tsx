@@ -91,7 +91,7 @@ export default function ServiceProcess({
         <div className="relative">
           {/* Desktop: Horizontal Flow with Arrow Connectors */}
           <div className="hidden lg:block">
-            <div className="flex items-center justify-center gap-8 flex-wrap">
+            <div className="flex items-stretch justify-center gap-8 flex-wrap">
               {steps.map((step, index) => {
                 const IconComponent = step.icon || defaultIcons[step.step] || Search
                 const isProcessing = processingStep === index
@@ -99,7 +99,7 @@ export default function ServiceProcess({
 
                 return (
                   <React.Fragment key={`${step.step}-${loopCount}`}>
-                    <div className="relative flex items-center">
+                    <div className="relative flex items-stretch">
                       {/* Card */}
                       <div
                         className={`
@@ -188,7 +188,7 @@ export default function ServiceProcess({
                 const isPastStep = processingStep !== null && index < processingStep
 
                 return (
-                  <div key={`${step.step}-${loopCount}`} className="relative flex items-center">
+                  <div key={`${step.step}-${loopCount}`} className="relative flex items-stretch">
                     {/* Arrow from previous (even items to left) */}
                     {index % 2 === 0 && index > 0 && (
                       <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
