@@ -75,7 +75,9 @@ export default function SeoPageClient() {
     >
       <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Güçlü Bir Online Varlık için SEO Stratejisi</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="gradient-text">Güçlü Bir Online Varlık için SEO Stratejisi</span>
+          </h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               SEO (Search Engine Optimization), web sitenizin Google ve diğer arama motorlarında daha yüksek sıralarda yer almasını
@@ -97,7 +99,9 @@ export default function SeoPageClient() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">SEO Performansınızı Hemen Artırın</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">SEO Performansınızı Hemen Artırın</span>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Uzman SEO ekibimiz ile hedef kitlenize ulaşın, organik trafiğinizi katlayın.
             </p>

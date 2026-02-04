@@ -75,7 +75,9 @@ export default function WebGelistirmePageClient() {
     >
       <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Modern Teknolojilerle Dijital Dönüşüm</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="gradient-text">Modern Teknolojilerle Dijital Dönüşüm</span>
+          </h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               İnternet dünyasında var olmanın ilk adımı, profesyonel ve etkileyici bir web sitesine sahip olmaktır.
@@ -97,7 +99,9 @@ export default function WebGelistirmePageClient() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Projenizi Konuşalım</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">Projenizi Konuşalım</span>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               İşletmeniz için özel tasarlanmış modern web sitesi için hemen iletişime geçin.
             </p>

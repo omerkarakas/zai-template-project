@@ -70,7 +70,9 @@ export default function PmkPageClient() {
     >
       <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Geleceğin Satış Sistemi: Akıllı Lead Kazanımı</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="gradient-text">Geleceğin Satış Sistemi: Akıllı Lead Kazanımı</span>
+          </h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               Moka Dijital'in uzmanlık alanı olan Potansiyel Müşteri Kazanımı (PMK) sistemi, n8n otomasyon platformu sayesinde
@@ -93,7 +95,9 @@ export default function PmkPageClient() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Satış Döngünüzü Hızlandırın</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">Satış Döngünüzü Hızlandırın</span>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               n8n tabanlı otomasyon sistemimizle daha çok sıcak müşteri edinin, satış sürenizi kısaltın.
             </p>

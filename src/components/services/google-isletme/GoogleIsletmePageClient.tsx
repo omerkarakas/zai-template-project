@@ -70,7 +70,9 @@ export default function GoogleIsletmePageClient() {
     >
       <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Google İşletme ile Yerel Pazarda Öne Çıkın</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="gradient-text">Google İşletme ile Yerel Pazarda Öne Çıkın</span>
+          </h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               Google İşletme Profili, işletmenizin Google Arama ve Haritalar'da görünür olmasını sağlayan ücretsiz bir araçtır.
@@ -92,7 +94,9 @@ export default function GoogleIsletmePageClient() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Başlamak İçin Doğru Zaman</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">Başlamak İçin Doğru Zaman</span>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               İşletmenizi yerel aramalarda birincil sıraya taşıyacak profesyonel hizmetlerden faydalanın.
             </p>

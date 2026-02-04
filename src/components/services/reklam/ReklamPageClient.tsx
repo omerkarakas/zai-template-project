@@ -75,7 +75,9 @@ export default function ReklamPageClient() {
     >
       <section className="mb-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Veri Odaklı Reklam Stratejileri</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="gradient-text">Veri Odaklı Reklam Stratejileri</span>
+          </h2>
           <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               Dijital dünyada doğru zamanda, doğru kitleye, doğru mesajla ulaşmak başarının anahtarıdır.
@@ -97,7 +99,9 @@ export default function ReklamPageClient() {
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Reklam Danışmanlığı Alın</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">Reklam Danışmanlığı Alın</span>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Reklam bütçenizden en iyi şekilde yararlanmak için uzman desteği alın.
             </p>

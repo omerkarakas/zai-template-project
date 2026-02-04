@@ -23,14 +23,14 @@ export default function ServicePageLayout({
         <div className="relative container mx-auto px-4 text-center">
           {/* Icon */}
           {icon && (
-            <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-xl bg-gradient-to-br from-primary to-primary/80 text-white">
+            <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-xl gradient-bg text-primary-foreground">
               {icon}
             </div>
           )}
 
           {/* Title */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            {title}
+            <span className="gradient-text">{title}</span>
           </h1>
 
           {/* Description */}
