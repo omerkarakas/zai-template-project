@@ -59,18 +59,13 @@ export default function ServiceProcess({
                     <div className="relative flex items-center">
                       {/* Card */}
                       <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 w-64 shadow-lg hover:shadow-xl">
-                        {/* Step Indicator */}
-                        <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                          {step.step}
-                        </div>
-
                         {/* Icon */}
-                        <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-lg">
+                        <div className="absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-lg">
                           <IconComponent className="w-5 h-5" />
                         </div>
 
                         {/* Content */}
-                        <div className="pt-3">
+                        <div className="pr-14">
                           <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
                             {step.title}
                           </h3>
@@ -124,18 +119,13 @@ export default function ServiceProcess({
                   <div key={step.step} className="relative flex items-center">
                     {/* Card */}
                     <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl flex-grow">
-                      {/* Step Badge */}
-                      <div className="absolute -top-2 -left-2 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold shadow-lg">
-                        {step.step}
-                      </div>
-
                       {/* Icon */}
-                      <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
+                      <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
                         <IconComponent className="w-4 h-4" />
                       </div>
 
                       {/* Content */}
-                      <div className="pt-3">
+                      <div className="pr-12">
                         <h3 className="text-base font-semibold mb-2 leading-tight">
                           {step.title}
                         </h3>
@@ -188,23 +178,18 @@ export default function ServiceProcess({
                   <div key={step.step} className="relative">
                     {/* Card */}
                     <div className="relative bg-gradient-to-br from-card to-card/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:border-primary/50 transition-all shadow-lg">
-                      {/* Header with Step and Icon */}
+                      {/* Header with Title and Icon */}
                       <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-md">
-                            {step.step}
-                          </div>
-                          <h3 className="text-lg font-semibold">
-                            {step.title}
-                          </h3>
-                        </div>
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md">
-                          <IconComponent className="w-4 h-4" />
+                        <h3 className="text-lg font-semibold pr-3">
+                          {step.title}
+                        </h3>
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                          <IconComponent className="w-5 h-5" />
                         </div>
                       </div>
 
                       {/* Description */}
-                      <p className="text-sm text-muted-foreground leading-relaxed pl-11">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {step.description}
                       </p>
                     </div>
