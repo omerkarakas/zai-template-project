@@ -103,7 +103,7 @@ export default function ServiceProcess({
                       {/* Card */}
                       <div
                         className={`
-                          relative rounded-xl border transition-all duration-300 w-64 shadow-lg hover:shadow-xl
+                          relative rounded-xl border transition-all duration-300 w-64 shadow-lg hover:shadow-xl flex flex-col
                           min-h-[180px]
                           ${isProcessing
                             ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
@@ -135,11 +135,11 @@ export default function ServiceProcess({
                         </div>
 
                         {/* Content */}
-                        <div className="pt-14 pr-14 pb-6 pl-6">
+                        <div className="pt-14 pr-14 pb-6 pl-6 h-full flex flex-col">
                           <h3 className="text-lg font-semibold mb-3 text-foreground leading-tight">
                             {step.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                             {step.description}
                           </p>
                         </div>
@@ -220,7 +220,7 @@ export default function ServiceProcess({
                     {/* Card */}
                     <div
                       className={`
-                        relative rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl flex-grow
+                        relative rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl flex-grow flex flex-col
                         min-h-[200px]
                         ${isProcessing
                           ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
@@ -252,11 +252,11 @@ export default function ServiceProcess({
                       </div>
 
                       {/* Content */}
-                      <div className="pr-12 pt-12 pb-6 pl-6">
+                      <div className="pr-12 pt-12 pb-6 pl-6 h-full flex flex-col">
                         <h3 className="text-base font-semibold mb-2 leading-tight">
                           {step.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-sm text-muted-foreground leading-relaxed flex-grow">
                           {step.description}
                         </p>
                       </div>
@@ -308,7 +308,7 @@ export default function ServiceProcess({
                     {/* Card */}
                     <div
                       className={`
-                        relative rounded-xl border transition-all shadow-lg
+                        relative rounded-xl border transition-all shadow-lg flex flex-col
                         min-h-[160px]
                         ${isProcessing
                           ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
@@ -327,12 +327,12 @@ export default function ServiceProcess({
                       }
                     >
                       {/* Header with Title and Icon */}
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-semibold pr-3">
+                      <div className="flex items-center justify-between px-4 pt-4 pb-2">
+                        <h3 className="text-base font-semibold pr-3">
                           {step.title}
                         </h3>
                         <div className={`
-                          w-10 h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0 transition-all
+                          w-9 h-9 rounded-lg flex items-center justify-center shadow-md flex-shrink-0 transition-all
                           ${isProcessing
                             ? 'bg-amber-500 text-white animate-pulse'
                             : isPastStep
@@ -340,7 +340,7 @@ export default function ServiceProcess({
                             : 'bg-foreground text-background'
                           }
                         `}>
-                          <IconComponent className="w-5 h-5" />
+                          <IconComponent className="w-4 h-4" />
                         </div>
                       </div>
 
