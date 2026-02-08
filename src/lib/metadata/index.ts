@@ -41,7 +41,7 @@ export const HOMEPAGE_METADATA: ServiceMetadata = {
 export const SERVICE_METADATA: Record<string, ServiceMetadata> = {
   'google-isletme': {
     slug: 'google-isletme',
-    title: 'Google İşletme Optimizasyonu Hizmeti Türkiye | Moka Dijital',
+    title: 'Google İşletme SEO Hizmeti Türkiye | Moka Dijital',
     description: 'Google İşletme profilinizi optimize ederek yerel aramalarda öne çıkın. Müşteri incelemeleri, fotoğraf yönetimi ve yerel SEO ile görünürlüğünüzü artırın.',
     keywords: [
       'google isletme optimizasyonu',

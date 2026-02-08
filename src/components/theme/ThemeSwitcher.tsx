@@ -6,7 +6,7 @@ import { useTheme } from '@/components/theme/ThemeProvider'
 import { Button } from '@/components/ui/button'
 
 export function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, mounted } = useTheme()
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
@@ -20,7 +20,7 @@ export function ThemeSwitcher() {
       onClick={toggleTheme}
       aria-label="Temayı değiştir"
     >
-      {theme === 'light' ? (
+      {!mounted || theme === 'light' ? (
         <Moon className="h-4 w-4" />
       ) : (
         <Sun className="h-4 w-4" />

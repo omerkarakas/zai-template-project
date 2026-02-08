@@ -5,8 +5,8 @@ const nextConfig = {
   // Static export for PHP hosting deployment
   output: 'export',
 
-  // Clean URLs without trailing slashes
-  trailingSlash: false,
+  // Trailing slash ensures directory-based index.html for static hosting
+  trailingSlash: true,
 
   // Image optimization configuration
   images: {

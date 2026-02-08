@@ -10,7 +10,7 @@ import { ContactModal } from '@/components/forms/ContactModal'
 
 export default function GoogleIsletmePageClient() {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const serviceName = 'Google İşletme Optimizasyonu'
+  const serviceName = 'Google İşletme SEO'
 
   const benefits = [
     {
@@ -64,7 +64,7 @@ export default function GoogleIsletmePageClient() {
 
   return (
     <ServicePageLayout
-      title="Google İşletme Optimizasyonu"
+      title="Google İşletme SEO"
       description="İşletmenizin Google İşletme Profili'ni optimize ederek yerel aramalarda öne çıkarın"
       icon={<MapPin className="w-10 h-10" />}
     >

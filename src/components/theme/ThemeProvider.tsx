@@ -12,11 +12,13 @@ type ThemeProviderProps = {
 type ThemeProviderState = {
   theme: Theme
   setTheme: (theme: Theme) => void
+  mounted: boolean
 }
 
 const initialState: ThemeProviderState = {
   theme: 'light',
   setTheme: () => null,
+  mounted: false,
 }
 
 const ThemeProviderContext = React.createContext<ThemeProviderState>(initialState)
@@ -26,21 +28,23 @@ export function ThemeProvider({
   storageKey = 'moka-theme',
   ...props
 }: ThemeProviderProps) {
-  // Determine initial theme: localStorage > system preference > light
-  const [theme, setThemeState] = React.useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(storageKey) as Theme
-      if (stored && (stored === 'light' || stored === 'dark')) {
-        return stored
-      }
-      // Check system preference
+  // Always start with 'light' to match server render, then sync on mount
+  const [theme, setThemeState] = React.useState<Theme>('light')
+  const [mounted, setMounted] = React.useState(false)
+
+  // On mount: read stored/system theme and apply
+  React.useEffect(() => {
+    const stored = localStorage.getItem(storageKey) as Theme
+    if (stored && (stored === 'light' || stored === 'dark')) {
+      setThemeState(stored)
+    } else {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light'
-      return systemTheme
+      setThemeState(systemTheme)
     }
-    return 'light'
-  })
+    setMounted(true)
+  }, [storageKey])
 
   React.useEffect(() => {
     const root = window.document.documentElement
@@ -56,6 +60,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme,
+    mounted,
   }
 
   return (

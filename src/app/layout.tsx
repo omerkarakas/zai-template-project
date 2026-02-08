@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'Moka Dijital - Dönüşüm Odaklı Web Sitesi',
   description: 'Dijital pazarlama ajansı. Google İşletme, SEO, Potansiyel Müşteri Kazanımı ve web sitesi geliştirme hizmetleri.',
   keywords: ['moka dijital', 'dijital pazarlama', 'seo ajansı', 'google isletme', 'n8n otomasyon'],
+  icons: {
+    icon: '/images/moka-logo-32x32.png',
+  },
   viewport: {
     width: 'device-width',
     initialScale: 1,

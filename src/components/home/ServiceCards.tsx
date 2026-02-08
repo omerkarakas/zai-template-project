@@ -12,7 +12,7 @@ interface ServiceCard {
 export default function ServiceCards() {
   const services: ServiceCard[] = [
     {
-      title: 'Google İşletme Optimizasyonu',
+      title: 'Google İşletme SEO',
       description: 'Google İşletme profilinizi optimize ederek yerel arama sonuçlarında ön plana çıkın.',
       icon: <MapPin className="h-8 w-8" />,
       href: '/hizmetler/google-isletme'

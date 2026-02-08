@@ -4,33 +4,21 @@ import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
 
+const services = [
+  { name: 'Google İşletme SEO', href: '/hizmetler/google-isletme' },
+  { name: 'Yerel SEO & Global SEO', href: '/hizmetler/seo' },
+  { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
+  { name: 'Web Sitesi Geliştirme', href: '/hizmetler/web-gelistirme' },
+  { name: 'Dijital Reklam Yönetimi', href: '/hizmetler/reklam' },
+  { name: 'İş Akışı ve AI Otomasyonları', href: '/hizmetler/otomasyon' },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Services for dropdown
-  const services = [
-    { name: 'Google İşletme Optimizasyonu', href: '/hizmetler/google-isletme' },
-    { name: 'Yerel SEO & Global SEO', href: '/hizmetler/seo' },
-    { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
-    { name: 'Web Sitesi Geliştirme', href: '/hizmetler/web-gelistirme' },
-    { name: 'Dijital Reklam Yönetimi', href: '/hizmetler/reklam' },
-    { name: 'İş Akışı ve AI Otomasyonları', href: '/hizmetler/otomasyon' },
-  ];
-
-  // Main navigation
-  const navigation = [
-    { name: 'Ana Sayfa', href: '/' },
-    { name: 'Hizmetler', hasDropdown: true },
-  ];
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -47,43 +35,39 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) =>
-              item.hasDropdown ? (
-                <DropdownMenu key={item.name}>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground flex items-center gap-1"
+            {/* Blog */}
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Blog
+            </Link>
+
+            {/* Hizmetler - Hover Dropdown */}
+            <div className="relative group">
+              <button
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground py-5"
+              >
+                Hizmetler
+                <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+
+              {/* Dropdown panel */}
+              <div className="absolute top-full right-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="w-64 rounded-lg border border-border bg-popover p-2 shadow-lg">
+                  {services.map((service) => (
+                    <Link
+                      key={service.name}
+                      href={service.href}
+                      className="block rounded-md px-3 py-2.5 text-sm text-popover-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
-                      {item.name}
-                      <ChevronDown className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    {services.map((service) => (
-                      <DropdownMenuItem key={service.name} asChild>
-                        <Link
-                          href={service.href}
-                          className="text-sm cursor-pointer"
-                        >
-                          {service.name}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                item.href && (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {item.name}
-                  </Link>
-                )
-              )
-            )}
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <ThemeSwitcher />
           </nav>
 
@@ -109,42 +93,39 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <nav className="space-y-1 py-4">
-              {navigation.map((item) =>
-                item.hasDropdown ? (
-                  <div key={item.name}>
-                    <button
-                      className="w-full text-left px-3 py-2 text-sm font-medium text-foreground bg-transparent border-none flex items-center justify-between"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                      <ChevronDown className="h-4 w-4" />
-                    </button>
-                    <div className="pl-6 pb-2 space-y-1">
-                      {services.map((service) => (
-                        <Link
-                          key={service.name}
-                          href={service.href}
-                          className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {service.name}
-                        </Link>
-                      ))}
-                    </div>
+              {/* Blog */}
+              <Link
+                href="/blog"
+                className="block px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+
+              {/* Hizmetler accordion */}
+              <div>
+                <button
+                  className="w-full text-left px-3 py-2 text-sm font-medium text-foreground bg-transparent border-none flex items-center justify-between"
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                >
+                  Hizmetler
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isMobileServicesOpen && (
+                  <div className="pl-6 pb-2 space-y-1">
+                    {services.map((service) => (
+                      <Link
+                        key={service.name}
+                        href={service.href}
+                        className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
                   </div>
-                ) : (
-                  item.href && (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="block px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  )
-                )
-              )}
+                )}
+              </div>
             </nav>
           </div>
         )}
