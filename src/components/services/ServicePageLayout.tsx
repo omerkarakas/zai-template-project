@@ -31,8 +31,8 @@ export default function ServicePageLayout({
           )}
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            <span className="gradient-text">{title}</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-normal mb-4 text-foreground drop-shadow-md">
+            {title}
           </h1>
 
           {/* Description */}

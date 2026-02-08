@@ -31,10 +31,10 @@ export default function Hero({ onContactClick }: HeroProps) {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="gradient-text">Dijital Dönüşümünüzde</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-normal mb-6 text-foreground drop-shadow-md">
+            Dijital Dönüşümünüzde
             <br />
-            <span className="gradient-text">Güvenilir Partneriniz</span>
+            Güvenilir Partneriniz
           </h1>
 
           {/* Subtitle */}
