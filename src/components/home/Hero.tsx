@@ -58,7 +58,7 @@ export default function Hero({ onContactClick }: HeroProps) {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => window.location.href = '/hizmetler/pmk'}
+              onClick={() => window.location.href = '/hizmetler/potansiyel-musteri-kazanimi'}
             >
               Potansiyel Müşteri Kazanımı
             </Button>

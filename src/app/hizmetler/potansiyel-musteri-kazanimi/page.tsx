@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import { SERVICE_METADATA } from '@/lib/metadata'
-import PmkPageClient from '@/components/services/pmk/PmkPageClient'
+import PmkPageClient from '@/components/services/potansiyel-musteri-kazanimi/PmkPageClient'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const metadata = SERVICE_METADATA['pmk']
+  const metadata = SERVICE_METADATA['potansiyel-musteri-kazanimi']
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://mokadijital.com'
-  const url = `${baseUrl}/hizmetler/pmk`
+  const url = `${baseUrl}/hizmetler/potansiyel-musteri-kazanimi`
 
   return {
     title: metadata.title,
@@ -24,6 +24,6 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function PmkPage() {
+export default function PotansiyelMusteriKazanimiPage() {
   return <PmkPageClient />
 }

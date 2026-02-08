@@ -1,10 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="w-full border-t border-border bg-muted/50">
@@ -62,7 +66,7 @@ export default function Footer() {
                 Yerel SEO & Global SEO
               </Link>
               <Link
-                href="/hizmetler/pmk"
+                href="/hizmetler/potansiyel-musteri-kazanimi"
                 className="block text-muted-foreground transition-colors hover:text-foreground"
               >
                 Potansiyel Müşteri Kazanımı

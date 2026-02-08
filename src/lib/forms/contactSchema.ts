@@ -29,7 +29,7 @@ export const contactSchema = z.object({
     .max(100, 'Şirket adı en fazla 100 karakter olabilir'),
 
   website: z.string()
-    .url('Geçerli bir web sitesi adresi giriniz')
+    .regex(/^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/.*)?$/, 'Geçerli bir web sitesi adresi giriniz (örn: abc.com)')
     .optional()
     .or(z.literal('')),
 

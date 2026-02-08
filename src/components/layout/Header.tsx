@@ -10,7 +10,7 @@ import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
 const services = [
   { name: 'Google İşletme SEO', href: '/hizmetler/google-isletme' },
   { name: 'Yerel SEO & Global SEO', href: '/hizmetler/seo' },
-  { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/pmk' },
+  { name: 'Potansiyel Müşteri Kazanımı', href: '/hizmetler/potansiyel-musteri-kazanimi' },
   { name: 'Web Sitesi Geliştirme', href: '/hizmetler/web-gelistirme' },
   { name: 'Dijital Reklam Yönetimi', href: '/hizmetler/reklam' },
   { name: 'İş Akışı ve AI Otomasyonları', href: '/hizmetler/otomasyon' },

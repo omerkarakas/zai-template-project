@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
@@ -18,10 +18,6 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/moka-logo-32x32.png',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   openGraph: {
     title: 'Moka Dijital - Dönüşüm Odaklı Web Sitesi',
     description: 'Dijital pazarlama ajansı. Google İşletme, SEO, Potansiyel Müşteri Kazanımı ve web sitesi geliştirme hizmetleri.',
@@ -31,6 +27,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           storageKey="moka-theme"
         >

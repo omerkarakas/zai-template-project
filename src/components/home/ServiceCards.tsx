@@ -27,7 +27,7 @@ export default function ServiceCards() {
       title: 'Potansiyel Müşteri Kazanımı',
       description: 'n8n otomasyonu ile potansiyel müşteri akışınızı otomatikleştirin ve artırın.',
       icon: <Users className="h-8 w-8" />,
-      href: '/hizmetler/pmk'
+      href: '/hizmetler/potansiyel-musteri-kazanimi'
     },
     {
       title: 'Web Sitesi Geliştirme',

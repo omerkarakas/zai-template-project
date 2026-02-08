@@ -15,12 +15,12 @@ export interface ServiceMetadata {
 
 /**
  * Homepage metadata
- * Title format: Dijital Pazarlama Ajansı | Moka Dijital - Google İşletme, SEO, PMK
+ * Title format: Dijital Pazarlama Ajansı | Moka Dijital - Google İşletme, SEO, Potansiyel Müşteri Kazanımı
  */
 export const HOMEPAGE_METADATA: ServiceMetadata = {
   slug: '',
-  title: 'Dijital Pazarlama Ajansı | Moka Dijital - Google İşletme, SEO, PMK',
-  description: 'Google İşletme, SEO, PMK ve dijital pazarlama çözümleri ile işletmenizi büyütün. Yerel aramalarda öne çıkın.',
+  title: 'Dijital Pazarlama Ajansı | Moka Dijital - Google İşletme, SEO, Potansiyel Müşteri Kazanımı',
+  description: 'Google İşletme, SEO, Potansiyel Müşteri Kazanımı ve dijital pazarlama çözümleri ile işletmenizi büyütün. Yerel aramalarda öne çıkın.',
   keywords: [
     'dijital pazarlama',
     'seo ajansı',
@@ -69,7 +69,7 @@ export const SERVICE_METADATA: Record<string, ServiceMetadata> = {
     changeFrequency: 'weekly',
     priority: 0.9,
   },
-  pmk: {
+  'potansiyel-musteri-kazanimi': {
     slug: 'potansiyel-musteri-kazanimi',
     title: 'Potansiyel Müşteri Kazanımı Hizmeti | n8n Otomasyon | Moka Dijital',
     description: 'n8n otomasyon ile potansiyel müşteri kazanın. Lead scoring, otomatik takip ve CRM entegrasyonu ile dönüşüm oranlarınızı maksimize edin.',
