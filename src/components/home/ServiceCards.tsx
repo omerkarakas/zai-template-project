@@ -1,6 +1,8 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
-import { MapPin, Search, Users, Code, Megaphone, Bot } from 'lucide-react';
+import { MapPin, Search, Users, Code, Megaphone, Bot, ArrowRight } from 'lucide-react';
+import { Boxes } from '@/components/ui/background-boxes';
 
 interface ServiceCard {
   title: string;
@@ -50,8 +52,13 @@ export default function ServiceCards() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-20 overflow-hidden bg-slate-50 dark:bg-slate-900">
+      {/* Background Boxes */}
+      <div className="absolute inset-0 w-full h-full bg-slate-50 dark:bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      <Boxes />
+
+      {/* Content */}
+      <div className="container mx-auto px-4 relative z-30">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -69,7 +76,7 @@ export default function ServiceCards() {
               <Link
                 key={index}
                 href={service.href}
-                className="group block p-6 bg-background rounded-lg border border-border hover:border-primary/50 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+                className="group block p-6 bg-background/80 backdrop-blur-sm rounded-lg border border-border hover:border-primary/50 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
               >
                 {/* Icon */}
                 <div className="w-12 h-12 rounded-lg gradient-bg flex items-center justify-center mb-4 text-primary-foreground">
@@ -99,5 +106,3 @@ export default function ServiceCards() {
     </section>
   );
 }
-
-import { ArrowRight } from 'lucide-react';

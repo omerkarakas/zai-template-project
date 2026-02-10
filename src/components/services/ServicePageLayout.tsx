@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { WavyBackground } from '@/components/ui/wavy-background'
 
 interface ServicePageLayoutProps {
   title: string
@@ -17,12 +18,18 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/50">
-      {/* Hero Section */}
-      <div className="relative py-16 lg:py-24 overflow-hidden service-hero-bg">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 z-0 bg-background/70" />
-
-        <div className="relative container mx-auto px-4 text-center z-10">
+      {/* Hero Section with Wavy Background */}
+      <div className="relative overflow-hidden">
+        <WavyBackground
+          containerClassName="h-[50vh]"
+          className="container mx-auto px-4 text-center"
+          backgroundFill="#020817"
+          colors={["#7c3aed", "#6366f1", "#818cf8", "#a78bfa", "#3b82f6"]}
+          waveOpacity={0.5}
+          blur={10}
+          speed="slow"
+          waveWidth={50}
+        >
           {/* Icon */}
           {icon && (
             <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-xl gradient-bg text-primary-foreground">
@@ -31,15 +38,15 @@ export default function ServicePageLayout({
           )}
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-normal mb-4 text-foreground drop-shadow-md">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-normal mb-4 text-white drop-shadow-md">
             {title}
           </h1>
 
           {/* Description */}
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
             {description}
           </p>
-        </div>
+        </WavyBackground>
       </div>
 
       {/* Main Content Area */}
