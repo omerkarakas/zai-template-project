@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
+import { ShinyButton } from '@/components/ui/shiny-button'
 import { ArrowRight } from 'lucide-react'
 
 interface HeroProps {
@@ -44,24 +44,25 @@ export default function Hero({ onContactClick }: HeroProps) {
             işletmenizi büyütmenize yardımcı oluyoruz.
           </p>
 
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="group"
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <ShinyButton
+              className="px-8 py-3 text-base"
               onClick={onContactClick}
             >
-              Hizmetlerimizi İnceleyin
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+              <span className="flex items-center gap-2">
+                Hizmetlerimizi İnceleyin
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </ShinyButton>
 
-            <Button
-              variant="outline"
-              size="lg"
+            <ShinyButton
+              variant="inverted"
+              className="px-8 py-3 text-base"
               onClick={() => window.location.href = '/hizmetler/potansiyel-musteri-kazanimi'}
             >
               Potansiyel Müşteri Kazanımı
-            </Button>
+            </ShinyButton>
           </div>
         </div>
       </div>

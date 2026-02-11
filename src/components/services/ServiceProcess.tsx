@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Search,
   Settings,
@@ -8,19 +8,20 @@ import {
   CheckCircle2,
   BarChart3,
   Trophy,
-  type LucideIcon
-} from 'lucide-react'
+  type LucideIcon,
+} from 'lucide-react';
+import { AnimatedBorder } from '@/components/ui/animated-border';
 
 interface ProcessStep {
-  step: number
-  title: string
-  description: string
-  icon?: LucideIcon
+  step: number;
+  title: string;
+  description: string;
+  icon?: LucideIcon;
 }
 
 interface ServiceProcessProps {
-  steps: ProcessStep[]
-  title?: string
+  steps: ProcessStep[];
+  title?: string;
 }
 
 // Default icons for each step position
@@ -31,56 +32,56 @@ const defaultIcons: Record<number, LucideIcon> = {
   4: CheckCircle2,
   5: BarChart3,
   6: Trophy,
-}
+};
 
 export default function ServiceProcess({
   steps,
-  title = "Süreç"
+  title = 'Süreç',
 }: ServiceProcessProps) {
   // Track which step is currently being processed
-  const [processingStep, setProcessingStep] = useState<number | null>(null)
-  const [loopCount, setLoopCount] = useState(0)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const [processingStep, setProcessingStep] = useState<number | null>(null);
+  const [loopCount, setLoopCount] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Clear any existing timeout
     if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
+      clearTimeout(timeoutRef.current);
     }
 
     // Start processing animation after component mounts
-    let currentStep = 0
+    let currentStep = 0;
 
     const processNextStep = () => {
       if (currentStep < steps.length) {
-        setProcessingStep(currentStep)
-        currentStep++
+        setProcessingStep(currentStep);
+        currentStep++;
         // Move to next step after 5 seconds
-        timeoutRef.current = setTimeout(processNextStep, 5000)
+        timeoutRef.current = setTimeout(processNextStep, 5000);
       } else {
         // All steps processed, restart animation after 5 seconds
-        setProcessingStep(null)
+        setProcessingStep(null);
         timeoutRef.current = setTimeout(() => {
-          setLoopCount(prev => prev + 1)
-          currentStep = 0
-          processNextStep()
-        }, 5000)
+          setLoopCount((prev) => prev + 1);
+          currentStep = 0;
+          processNextStep();
+        }, 5000);
       }
-    }
+    };
 
     // Start after a short delay
-    timeoutRef.current = setTimeout(processNextStep, 500)
+    timeoutRef.current = setTimeout(processNextStep, 500);
 
     return () => {
       if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
+        clearTimeout(timeoutRef.current);
       }
-    }
-  }, [steps.length, loopCount])
+    };
+  }, [steps.length, loopCount]);
 
   return (
     <section className="py-16 lg:py-24">
-      <div className="container mx-auto px-4">
+      <AnimatedBorder className="container mx-auto px-4 py-4 border border-border/30 bg-card/50">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -95,9 +96,11 @@ export default function ServiceProcess({
           <div className="hidden lg:block">
             <div className="flex items-stretch justify-center gap-8 flex-wrap">
               {steps.map((step, index) => {
-                const IconComponent = step.icon || defaultIcons[step.step] || Search
-                const isProcessing = processingStep === index
-                const isPastStep = processingStep !== null && index < processingStep
+                const IconComponent =
+                  step.icon || defaultIcons[step.step] || Search;
+                const isProcessing = processingStep === index;
+                const isPastStep =
+                  processingStep !== null && index < processingStep;
 
                 return (
                   <React.Fragment key={`${step.step}-${loopCount}`}>
@@ -107,32 +110,37 @@ export default function ServiceProcess({
                         className={`
                           relative rounded-xl border transition-all duration-300 w-64 shadow-lg hover:shadow-xl flex flex-col
                           min-h-[180px]
-                          ${isProcessing
-                            ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
-                            : isPastStep
-                            ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
-                            : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                          ${
+                            isProcessing
+                              ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                              : isPastStep
+                                ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                                : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
                           }
                         `}
                         style={
                           isProcessing
                             ? {
                                 backgroundSize: '400% 400%',
-                                backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                                backgroundImage:
+                                  'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
                               }
                             : undefined
                         }
                       >
                         {/* Icon */}
-                        <div className={`
+                        <div
+                          className={`
                           absolute top-3 right-3 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all
-                          ${isProcessing
-                            ? 'bg-amber-500 text-white animate-pulse'
-                            : isPastStep
-                            ? 'bg-green-500 text-white'
-                            : 'bg-foreground text-background'
+                          ${
+                            isProcessing
+                              ? 'bg-amber-500 text-white animate-pulse'
+                              : isPastStep
+                                ? 'bg-green-500 text-white'
+                                : 'bg-foreground text-background'
                           }
-                        `}>
+                        `}
+                        >
                           <IconComponent className="w-5 h-5" />
                         </div>
 
@@ -155,7 +163,9 @@ export default function ServiceProcess({
                             height="24"
                             viewBox="0 0 60 24"
                             fill="none"
-                            className={isPastStep ? "text-green-400" : "text-primary/40"}
+                            className={
+                              isPastStep ? 'text-green-400' : 'text-primary/40'
+                            }
                           >
                             <path
                               d="M0 12 L50 12"
@@ -176,7 +186,7 @@ export default function ServiceProcess({
                       )}
                     </div>
                   </React.Fragment>
-                )
+                );
               })}
             </div>
           </div>
@@ -185,12 +195,17 @@ export default function ServiceProcess({
           <div className="hidden md:block lg:hidden">
             <div className="grid grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
               {steps.map((step, index) => {
-                const IconComponent = step.icon || defaultIcons[step.step] || Search
-                const isProcessing = processingStep === index
-                const isPastStep = processingStep !== null && index < processingStep
+                const IconComponent =
+                  step.icon || defaultIcons[step.step] || Search;
+                const isProcessing = processingStep === index;
+                const isPastStep =
+                  processingStep !== null && index < processingStep;
 
                 return (
-                  <div key={`${step.step}-${loopCount}`} className="relative flex items-stretch">
+                  <div
+                    key={`${step.step}-${loopCount}`}
+                    className="relative flex items-stretch"
+                  >
                     {/* Arrow from previous (even items to left) */}
                     {index % 2 === 0 && index > 0 && (
                       <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
@@ -199,7 +214,9 @@ export default function ServiceProcess({
                           height="24"
                           viewBox="0 0 60 24"
                           fill="none"
-                          className={isPastStep ? "text-green-400" : "text-primary/30"}
+                          className={
+                            isPastStep ? 'text-green-400' : 'text-primary/30'
+                          }
                         >
                           <path
                             d="M0 12 L50 12"
@@ -224,32 +241,37 @@ export default function ServiceProcess({
                       className={`
                         relative rounded-xl border transition-all duration-300 shadow-lg hover:shadow-xl flex-grow flex flex-col
                         min-h-[200px]
-                        ${isProcessing
-                          ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
-                          : isPastStep
-                          ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
-                          : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                        ${
+                          isProcessing
+                            ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                            : isPastStep
+                              ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                              : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
                         }
                       `}
                       style={
                         isProcessing
                           ? {
                               backgroundSize: '400% 400%',
-                              backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                              backgroundImage:
+                                'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
                             }
                           : undefined
                       }
                     >
                       {/* Icon */}
-                      <div className={`
+                      <div
+                        className={`
                         absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all
-                        ${isProcessing
-                          ? 'bg-amber-500 text-white animate-pulse'
-                          : isPastStep
-                          ? 'bg-green-500 text-white'
-                          : 'bg-foreground text-background'
+                        ${
+                          isProcessing
+                            ? 'bg-amber-500 text-white animate-pulse'
+                            : isPastStep
+                              ? 'bg-green-500 text-white'
+                              : 'bg-foreground text-background'
                         }
-                      `}>
+                      `}
+                      >
                         <IconComponent className="w-4 h-4" />
                       </div>
 
@@ -272,7 +294,9 @@ export default function ServiceProcess({
                           height="24"
                           viewBox="0 0 60 24"
                           fill="none"
-                          className={isPastStep ? "text-green-400" : "text-primary/30"}
+                          className={
+                            isPastStep ? 'text-green-400' : 'text-primary/30'
+                          }
                         >
                           <path
                             d="M0 12 L50 12"
@@ -292,7 +316,7 @@ export default function ServiceProcess({
                       </div>
                     )}
                   </div>
-                )
+                );
               })}
             </div>
           </div>
@@ -301,9 +325,11 @@ export default function ServiceProcess({
           <div className="md:hidden">
             <div className="max-w-md mx-auto space-y-6">
               {steps.map((step, index) => {
-                const IconComponent = step.icon || defaultIcons[step.step] || Search
-                const isProcessing = processingStep === index
-                const isPastStep = processingStep !== null && index < processingStep
+                const IconComponent =
+                  step.icon || defaultIcons[step.step] || Search;
+                const isProcessing = processingStep === index;
+                const isPastStep =
+                  processingStep !== null && index < processingStep;
 
                 return (
                   <div key={`${step.step}-${loopCount}`} className="relative">
@@ -312,18 +338,20 @@ export default function ServiceProcess({
                       className={`
                         relative rounded-xl border transition-all shadow-lg flex flex-col
                         min-h-[160px]
-                        ${isProcessing
-                          ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
-                          : isPastStep
-                          ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
-                          : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
+                        ${
+                          isProcessing
+                            ? 'bg-gradient-to-br from-amber-50/50 to-orange-100/30 dark:from-amber-950/30 dark:to-orange-900/20 border-amber-200/50 dark:border-amber-800/30 animate-processing-shimmer'
+                            : isPastStep
+                              ? 'bg-gradient-to-br from-green-50/30 to-emerald-100/20 dark:from-green-950/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20'
+                              : 'bg-gradient-to-br from-card to-card/50 border-border/50 hover:border-primary/50'
                         }
                       `}
                       style={
                         isProcessing
                           ? {
                               backgroundSize: '400% 400%',
-                              backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
+                              backgroundImage:
+                                'linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 25%, transparent 50%, rgba(120, 113, 108, 0.1) 75%, transparent 100%)',
                             }
                           : undefined
                       }
@@ -333,15 +361,18 @@ export default function ServiceProcess({
                         <h3 className="text-base font-semibold pr-3">
                           {step.title}
                         </h3>
-                        <div className={`
+                        <div
+                          className={`
                           w-9 h-9 rounded-lg flex items-center justify-center shadow-md flex-shrink-0 transition-all
-                          ${isProcessing
-                            ? 'bg-amber-500 text-white animate-pulse'
-                            : isPastStep
-                            ? 'bg-green-500 text-white'
-                            : 'bg-foreground text-background'
+                          ${
+                            isProcessing
+                              ? 'bg-amber-500 text-white animate-pulse'
+                              : isPastStep
+                                ? 'bg-green-500 text-white'
+                                : 'bg-foreground text-background'
                           }
-                        `}>
+                        `}
+                        >
                           <IconComponent className="w-4 h-4" />
                         </div>
                       </div>
@@ -360,7 +391,9 @@ export default function ServiceProcess({
                           height="60"
                           viewBox="0 0 40 60"
                           fill="none"
-                          className={isPastStep ? "text-green-400" : "text-primary/30"}
+                          className={
+                            isPastStep ? 'text-green-400' : 'text-primary/30'
+                          }
                         >
                           {/* Vertical line */}
                           <path
@@ -382,7 +415,7 @@ export default function ServiceProcess({
                       </div>
                     )}
                   </div>
-                )
+                );
               })}
             </div>
           </div>
@@ -399,10 +432,10 @@ export default function ServiceProcess({
                     processingStep === null
                       ? 'bg-primary'
                       : i < processingStep!
-                      ? 'bg-green-500'
-                      : i === processingStep
-                      ? 'bg-amber-500 animate-pulse'
-                      : 'bg-primary/30'
+                        ? 'bg-green-500'
+                        : i === processingStep
+                          ? 'bg-amber-500 animate-pulse'
+                          : 'bg-primary/30'
                   }`}
                 />
               ))}
@@ -410,12 +443,11 @@ export default function ServiceProcess({
             <span className="font-medium text-sm">
               {processingStep === null
                 ? 'Süreç Tamamlandı'
-                : `Adım ${processingStep + 1} İşleniyor...`
-              }
+                : `Adım ${processingStep + 1} İşleniyor...`}
             </span>
           </div>
         </div>
-      </div>
+      </AnimatedBorder>
     </section>
-  )
+  );
 }
