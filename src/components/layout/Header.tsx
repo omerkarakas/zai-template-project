@@ -29,6 +29,8 @@ export default function Header() {
             <img
               src="/moka-logo-text-bg.png"
               alt="Moka Dijital"
+              width={609}
+              height={203}
               className="h-8 w-auto"
             />
           </Link>

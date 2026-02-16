@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { CheckCircle } from 'lucide-react'
+import { Boxes } from '@/components/ui/background-boxes'
 
 interface Benefit {
   title: string
@@ -19,8 +20,12 @@ export default function ServiceBenefits({
   title = "Faydalar"
 }: ServiceBenefitsProps) {
   return (
-    <section className="py-16 lg:py-24">
-      <div className="container mx-auto px-4">
+    <section className="relative py-16 lg:py-24 overflow-hidden bg-slate-50 dark:bg-slate-900 -mx-[calc((100vw-100%)/2)] w-screen">
+      {/* Background Boxes */}
+      <div className="absolute inset-0 w-full h-full bg-slate-50 dark:bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      <Boxes />
+
+      <div className="container mx-auto px-4 relative z-30">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -34,7 +39,7 @@ export default function ServiceBenefits({
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative p-6 lg:p-8 rounded-2xl border border-border/50 bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="group relative p-6 lg:p-8 rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               {/* Icon */}
               <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-xl gradient-bg">

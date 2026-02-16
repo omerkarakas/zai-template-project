@@ -197,8 +197,8 @@ export function ContactForm({
           <Input
             id="website"
             {...register("website")}
-            type="url"
-            placeholder="https://example.com"
+            type="text"
+            placeholder="abc.com veya https://abc.com"
             disabled={isDisabled}
             className={cn(errors.website && "border-destructive focus-visible:ring-destructive")}
             aria-invalid={!!errors.website}

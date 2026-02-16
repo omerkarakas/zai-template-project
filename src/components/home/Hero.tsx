@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { ShinyButton } from '@/components/ui/shiny-button'
 import { ArrowRight } from 'lucide-react'
 
@@ -9,19 +9,50 @@ interface HeroProps {
 }
 
 export default function Hero({ onContactClick }: HeroProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoReady, setVideoReady] = useState(false)
+
+  useEffect(() => {
+    function loadVideo() {
+      const video = videoRef.current
+      if (!video) return
+      video.src = '/videos/hero-video.mp4'
+      video.load()
+      video.play().catch(() => {})
+    }
+
+    // İlk paint'ten sonra videoyu yükle - kritik kaynakları engellememesi için
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(loadVideo)
+      return () => window.cancelIdleCallback(id)
+    } else {
+      const id = setTimeout(loadVideo, 200)
+      return () => clearTimeout(id)
+    }
+  }, [])
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       {/* Video background - same for all themes */}
       <div className="absolute inset-0 -z-10">
+        {/* Poster image - LCP element, preloaded in layout.tsx */}
+        <img
+          src="/images/hero-poster.jpg"
+          alt=""
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in ${videoReady ? 'opacity-0' : 'opacity-70'}`}
+        />
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-70"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+          preload="none"
+          onCanPlay={() => setVideoReady(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in ${videoReady ? 'opacity-70' : 'opacity-0'}`}
+        />
         {/* Gradient overlay - light theme */}
         <div className="dark:hidden absolute inset-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/70 to-purple-50/70" />
         {/* Gradient overlay - dark theme */}

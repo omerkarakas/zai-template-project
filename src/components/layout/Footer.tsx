@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Boxes } from '@/components/ui/background-boxes';
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(2026);
@@ -11,8 +12,27 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full border-t border-border bg-muted/50">
-      <div className="container px-4 py-8 max-w-6xl mx-auto">
+    <footer className="relative w-full border-t border-border bg-slate-50 dark:bg-slate-900 overflow-hidden">
+      {/* Background Boxes */}
+      <div className="absolute inset-0 w-full h-full bg-slate-50 dark:bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      <Boxes />
+      {/* Google Maps */}
+      <div className="container px-4 pt-8 max-w-6xl mx-auto text-center relative z-30">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <span className="gradient-text">Bize Ulaşın</span>
+        </h2>
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.8604403930854!2d32.84986900365568!3d39.92367664282088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34effc8ffac81%3A0xe9b87f07136449b8!2zS8SxesSxbGF5LCBGZXZ6aSDDh2FrbWFrLTEgU2suIE5vOjExLzEzLCAwNjQyMCDDh2Fua2F5YS9BbmthcmE!5e1!3m2!1str!2str!4v1770814577430!5m2!1str!2str"
+        className="w-full h-[300px] md:h-[400px] relative z-30"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Moka Dijital Konum"
+      />
+
+      <div className="container px-4 py-8 max-w-6xl mx-auto relative z-30">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>

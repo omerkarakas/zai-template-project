@@ -1,0 +1,23 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "03d62b2eabc04169bdcc3b756f994199.oajf2Hpr7PLV8qjE"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebSearch",
+      "Bash(if:*)",
+      "Bash(then echo \"exists\")",
+      "Bash(else echo \"not exists\")",
+      "Bash(fi)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run build:*)",
+      "Bash(node:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "n8n-mcp"
+  ]
+}

@@ -39,6 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/images/hero-poster.jpg" as="image" />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           storageKey="moka-theme"
